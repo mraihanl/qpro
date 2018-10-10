@@ -34,7 +34,9 @@ class C_sistem extends CI_Controller
 			);
 
 			//masukkan ke datanya ke model
-			$this->m_sistem->inputuser($data);			
+			$this->m_sistem->inputuser($data);
+			$this->session->set_flashdata('sukses',"Data Inserted Successfully");				
+			redirect('/c_sistem/user_data');			
 		}		
 	}//end function input()
 
@@ -68,7 +70,7 @@ class C_sistem extends CI_Controller
 	{
 			//ambil data dari field
 			$username=$this->input->post('username');
-			$password=$this->input->post('password');
+			$password=md5($this->input->post('password'));
 			$mail=$this->input->post('mail');
 			$name=$this->input->post('name');
 			$rocode=$this->input->post('rocode');		
@@ -88,6 +90,7 @@ class C_sistem extends CI_Controller
 
 			//masukkan ke datanya ke model
 			$this->m_sistem->updateuser($where,$data,'zus');
+			$this->session->set_flashdata('sukses',"Data Inserted Successfully");	
 			redirect('/c_sistem/user_data');				
 	}//end function update
 

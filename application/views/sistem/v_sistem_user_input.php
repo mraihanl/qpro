@@ -28,7 +28,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Password</label>
-                                                <input type="text" class="form-control" placeholder="Password" name="password">
+                                                <input type="password" class="form-control" placeholder="Password" name="password">
                                             </div>
                                         </div>
                                     </div>
@@ -37,7 +37,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input type="text" class="form-control" placeholder="Email" name="mail">
+                                                <input type="email" class="form-control" placeholder="Email" name="mail">
                                             </div>
                                             <div class="form-group">
                                                   <label>Nama</label>
