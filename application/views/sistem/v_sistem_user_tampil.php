@@ -1,4 +1,4 @@
-
+<body>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -20,6 +20,11 @@
                                 <div class="btn btn-default">
                                   <i class="fa fa-filter"></i>
                                 </div>
+                                <?php if ($this->session->flashdata('sukses')) { ?>
+                                  <div class="alert alert-success alert-dismissible">
+                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <?= $this->session->flashdata('sukses') ?> </div>
+                                  <?php } ?> 
                               </div>
                               <div class="col-md-6">
                                 <div class="row">
@@ -66,15 +71,12 @@
                                             <td><?=$user->mail; ?></td>
                                             <td><?=$user->rocode; ?></td>
                                             <td width="200" style="text-align: center;">
-                                              <div class="row">
+                                              <div class="row">                                            
                                                 <div class="btn btn-info">
-                                                  <i class="fa fa-eye"></i>
-                                                </div>
-                                                <div class="btn btn-warning">
                                                   <?php echo anchor('c_sistem/user_edit/'.$user->username,'<i class="fa fa-edit"></i>'); ?>
                                                 </div>
                                                 <div class="btn btn-danger">
-                                                  <?php echo anchor('c_sistem/user_hapus/'.$user->username,'<i class="fa fa-trash"></i>'); ?>
+                                                   <i class="fa fa-trash" onclick="hapus(<?php echo $user->username; ?>)"></i>
                                                 </div>
                                               </div>
                                             </td>
@@ -87,3 +89,13 @@
                     </div>
                 </div>
             </div>
+            <script type="text/javascript">
+              function hapus(id){
+                  if (confirm("Hapus Data ?")) {
+                    window.location='<?php echo site_url('c_sistem/user_hapus/'); ?>'+id;
+                  } else {
+                  alert('Hapus data dibatalkan');
+                  }
+                }
+            </script>
+          </body>
