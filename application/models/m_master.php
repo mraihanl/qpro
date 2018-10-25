@@ -136,28 +136,5 @@ class M_master extends CI_Model
 		$query=$this->db->get('ych');
 		return $query->result();
 	}
-
-	//Modul Goods Receipt==============================================================
-	function inputgdrc($data)
-	{
-		$this->db->insert('xgr', $data);
-	}
-
-	function hapusgdrc($where,$table)
-	{
-		$this->db->where($where);
-		$this->db->delete($table);
-	}
-	function editgdrc($where,$table){		
-	return $this->db->get_where($table,$where);
-	}
-	function updategdrc($where,$data,$table){
-		$this->db->where($where);
-		$this->db->update($table,$data);
-	}	
-	function tampilgdrcall()
-	{
-		$query=$this->db->get('xgr');
-		return $query->result();
-	}
+	
 }

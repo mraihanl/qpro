@@ -48,13 +48,10 @@
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
-                                        <th>Code</th>
-                    										<th>BR Code</th>
-                    										<th>CS Code</th>
-                    										<th>Transaction Date</th>
-                    										<th>Transaction Type</th>
-                    										<th>T.O.P</th>
-                    										<th>PO Number</th>
+                                        <th>ISBN</th>
+                    										<th>Customer</th>                    										
+                    										<th>Transaction Date</th>                    										
+                    										<th>Pembayaran</th>s                    										
                     										<th>Amount</th>
                     										<th>Discount</th>
                                         <th>Tax</th>
@@ -64,18 +61,15 @@
                                     <tbody>
                                       <?php foreach($sis as $si){?>
                                         <tr>
-                                            <td><?=$si->code; ?></td>
-                                            <td><?=$si->brcode; ?></td>
-                                            <td><?=$si->cscode; ?></td>
-                                            <td><?=$si->trandate; ?></td>
-                                            <td><?=$si->trantipe; ?></td>
-                                            <td><?=$si->top; ?></td>
-                                            <td><?=$si->ponum; ?></td>
+                                            <td><?=$si->isbn; ?></td> 
+                                            <td><?=$si->customer; ?></td>                                 
+                                            <td><?=$si->trandate; ?></td>                                 
+                                            <td><?=$si->top; ?></td>                                      
                                             <td><?=$si->amount; ?></td>
                                             <td><?=$si->discount; ?></td>
                                             <td><?=$si->tax; ?></td>
                                             <td><?=$si->netamount; ?></td>
-                                            <td width="200" style="text-align: center;">
+                                            <!-- <td width="200" style="text-align: center;">
                                               <div class="row">
                                                 <div class="btn btn-info">
                                                   <i class="fa fa-eye"></i>
@@ -87,7 +81,7 @@
                                                   <?php echo anchor('c_transaksi/sales_invoice_hapus/'.$si->code,'<i class="fa fa-trash"></i>'); ?>
                                                 </div>
                                               </div>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                         <?php }?>
                                     </tbody>

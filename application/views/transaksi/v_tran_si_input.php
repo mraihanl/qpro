@@ -22,22 +22,16 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Kode</label>
-                                            <input type="text" class="form-control" placeholder="Code" name="code">
+                                            <label>ISBN</label>
+                                            <input type="text" class="form-control" placeholder="ISBN" name="isbn">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                <div class="row">                                
+                                    <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>BR Code</label>
-                                            <input type="text" class="form-control" placeholder="BR Code" name="brcode">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>CS Code</label>
-                                            <input type="text" class="form-control" placeholder="CS Code" name="cscode">
+                                            <label>CUSTOMER</label>
+                                            <input type="text" class="form-control" placeholder="Customer" name="customer">
                                         </div>
                                     </div>
                                 </div>
@@ -45,47 +39,34 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Tanggal Transaksi</label>
-                                            <input type="date" class="form-control" placeholder="Transaction Date" name="trandate">
+                                            <input type="datetime-local" class="form-control" placeholder="Transaction Date" name="trandate">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Tipe Transaksi</label>
-                                            <input type="text" class="form-control" placeholder="Transaction Type" name="trantipe">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Jenis Pembayaran</label>
-                                            <input type="text" class="form-control" placeholder="Term Of Payment" name="top">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>PO Number</label>
-                                            <input type="text" class="form-control" placeholder="PO Number" name="ponum">
+                                            <input type="text" class="form-control" placeholder="Type Of Payment" name="top">
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Jumlah</label>
-                                            <input type="text" class="form-control" placeholder="Amount" name="amount">
+                                            <input type="text" class="form-control" placeholder="Amount" name="amount" id="jumlah" onkeyup="sum()">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Diskon</label>
-                                            <input type="text" class="form-control" placeholder="Discount" name="discount">
+                                            <label>Diskon(%)</label>
+                                            <input type="text" class="form-control" placeholder="Discount" name="discount" id="diskon" onkeyup="sum()">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Pajak</label>
-                                            <input type="text" class="form-control" placeholder="Tax" name="tax">
+                                            <label>Pajak(%)</label>
+                                            <input type="text" class="form-control" placeholder="Tax" name="tax" id="pajak" onkeyup="sum()">
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +74,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Total Jumlah</label>
-                                            <input type="text" class="form-control" placeholder="Nett Amount" name="netamount">
+                                            <input type="text" class="form-control" placeholder="Nett Amount" name="netamount" id="total" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -109,4 +90,16 @@
         </div>
     </div>
 </form>
-    
+<script type="text/javascript">
+    function sum(){
+        var jumlah = document.getElementById('jumlah').value;
+        var diskon = document.getElementById('diskon').value;
+        var pajak = document.getElementById('pajak').value;
+        var jumdis = (parseInt(jumlah)-(parseInt(jumlah)*(parseInt(diskon)/100)));
+        var total = jumdis+(jumdis*(parseInt(pajak)/100));
+        if (!isNaN(total)) {
+         document.getElementById('total').value = total;
+      }
+    }
+</script>
+</body>

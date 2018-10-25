@@ -86,5 +86,80 @@ class M_transaksi extends CI_Model
 		return $query->result();
 	}
 
+	//Modul Good Issue==================================================================
+	function gi_input($data)
+	{
+		$this->db->insert('xgi', $data);
+	}
+	function gi_tampil()
+	{
+		$query=$this->db->get('xgi');
+		return $query->result();
+	}
+	function gihapus($where,$table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+
+	function search_isbn($isbn){
+		$this->db->like( 'isbn', $isbn , 'both');
+		$this->db->order_by('isbn', 'ASC');
+		$this->db->limit(10);
+		return $this->db->get('ybk')->result();
+	}
+
+	function search_wrhs($name){
+		$this->db->like( 'name', $name , 'both');
+		$this->db->order_by('name', 'ASC');
+		$this->db->limit(10);
+		return $this->db->get('zbr')->result();
+	}
+
+	public function totalgi() 
+    {
+        return $this->db->count_all("xgi");
+    }
+
+    public function recordgi($limit, $start) 
+    {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get("xgi");
+ 
+        if ($query->num_rows() > 0) 
+        {
+            foreach ($query->result() as $row) 
+            {
+                $data[] = $row;
+            }             
+            return $data;
+        } 
+        return false;
+    }
+
+    //Modul Good Receipt======================================================================
+    function inputgdrc($data)
+	{
+		$this->db->insert('xgr', $data);
+	}
+
+	function hapusgdrc($where,$table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+	function editgdrc($where,$table){		
+	return $this->db->get_where($table,$where);
+	}
+	function updategdrc($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}	
+	function tampilgdrcall()
+	{
+		$query=$this->db->get('xgr');
+		return $query->result();
+	}    
+
 }
 ?>

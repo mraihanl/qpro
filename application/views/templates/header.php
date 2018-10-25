@@ -16,15 +16,20 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/light-bootstrap-dashboard.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/pe-icon-7-stroke.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url().'assets/css/jquery-ui.css'?>"> 
     <!-- <link rel="stylesheet" type="text/css" href="<?php //echo base_url(); ?>css/dropzone.css"> -->
 
-    <script type='text/javascript' src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
+    <!-- <script type='text/javascript' src="<?php echo base_url(); ?>js/bootstrap.min.js"></script> -->
     <script type='text/javascript' src="<?php echo base_url(); ?>js/bootstrap-notify.js"></script>
     <script type='text/javascript' src="<?php echo base_url(); ?>js/bootstap-select.js"></script>
     <script type='text/javascript' src="<?php echo base_url(); ?>js/chartist.js"></script>
     <script type='text/javascript' src="<?php echo base_url(); ?>js/demo.js"></script>
-    <script type='text/javascript' src="<?php echo base_url(); ?>js/jquery.3.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src="<?php echo base_url(); ?>js/jquery.3.2.1.min.js"></script> -->
+    <script type='text/javascript' src="<?php echo base_url(); ?>js/jquery-3.3.1.js"></script>
+    <script type='text/javascript' src="<?php echo base_url(); ?>js/jquery-ui.js"></script>
     <script type='text/javascript' src="<?php echo base_url(); ?>js/light-bootstrap-dashboard.js"></script>
+  
+  <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
     <!-- <script type='text/javascript' src="<?php //echo base_url(); ?>js/dropzone.js"></script> -->
 
     <!--     Fonts and icons     -->
@@ -42,7 +47,7 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
-                    <img src="<?php echo base_url('img/tehbotol.png'); ?>" style="width: 100px;border-radius: 5px;">
+                    <img src="<?php echo base_url('img/aplog.png'); ?>" style="background-color: white; width: 100px;border-radius: 5px;">
                 </a>
             </div>
 
@@ -88,9 +93,7 @@
                         <ul class="list-group">
                           <li class="list-group-item"><?php echo anchor('c_master/master_buku_data', 'Master Buku'); ?></li>
                           <li class="list-group-item"><?php echo anchor('c_master/master_cust_data', 'Master Customer'); ?></li>
-                          <li class="list-group-item"><?php echo anchor('c_master/master_wrhs_data', 'Master Warehouse'); ?></li>
-                          <li class="list-group-item"><?php echo anchor('c_master/master_chgs_data', 'Master Charges'); ?></li>
-                          
+                          <li class="list-group-item"><?php echo anchor('c_master/master_wrhs_data', 'Master Warehouse'); ?></li>                          
                         </ul>
                       </div>
                     </div>
@@ -107,11 +110,9 @@
                       </a>
                       <div id="collapse3" class="panel-collapse collapse">
                         <ul class="list-group">
-                          <li class="list-group-item"><?php echo anchor('c_transaksi/delivery_order_input', 'Delivery Order'); ?></li>
-                          <li class="list-group-item"><?php echo anchor('c_master/master_gdrc_input', 'Goods Receipt'); ?></li>
-                          <li class="list-group-item"><?php echo anchor('c_transaksi/sales_invoice_input', 'Sales Invoice'); ?></li>
-                          <li class="list-group-item"><?php echo anchor('c_transaksi/incoming_payment_input', 'Incoming Payment'); ?></li>                          
-                          <li class="list-group-item"><?php echo anchor('c_transaksi/SC_memo_input', 'Sales Credit Memo'); ?></li>                         
+                          <li class="list-group-item"><?php echo anchor('c_transaksi/gi_data', 'Good Issue'); ?></li>
+                          <li class="list-group-item"><?php echo anchor('c_transaksi/gr_data', 'Good Receipt'); ?></li>                         
+                          <li class="list-group-item"><?php echo anchor('c_transaksi/sales_invoice_input', 'Sales Invoice'); ?></li>                                   
                         </ul>
                       </div>
                     </div>
@@ -127,16 +128,10 @@
                       </div>
                       </a>
                       <div id="collapse4" class="panel-collapse collapse">
-                        <ul class="list-group">
-                          <li class="list-group-item">Stock Inventory Report</li>
-                          <li class="list-group-item">Receiving Report</li>
-                          <li class="list-group-item">Delivery Report</li>
-                          <li class="list-group-item">Sales Report</li>
-                          <li class="list-group-item">Customer Aging Report</li>
-                          <li class="list-group-item">Best Seller Report</li>
-                          <li class="list-group-item">Report Retur</li>
-                          <li class="list-group-item">Incoming Payment Report</li>
-                          <li class="list-group-item">Customer Balance Report</li>
+                        <ul class="list-group">                        
+                          <li class="list-group-item">Pengiriman Barang All Warehouse</li>
+                          <li class="list-group-item">Pengiriman Barang by Warehouse</li>                        
+                          <li class="list-group-item">Penjualan</li>                        
                         </ul>
                       </div>
                     </div>

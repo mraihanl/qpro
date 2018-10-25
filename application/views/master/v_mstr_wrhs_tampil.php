@@ -56,6 +56,7 @@
       										<th>Mail</th>
       										<th>Kontak</th>
       										<th>Alamat</th>
+                          <th>Action</th>
                       </thead>
                       <tbody>
                         <?php foreach($wrhss as $wrhs){?>
@@ -67,11 +68,8 @@
                               <td><?=$wrhs->mail; ?></td>
                               <td><?=$wrhs->contact; ?></td>
                               <td><?=$wrhs->address; ?></td>
-                              <td width="200" style="text-align: center;">
+                              <td>
                                 <div class="row">
-                                  <!-- <div class="btn btn-info">
-                                    <i class="fa fa-eye"></i>
-                                  </div> -->
                                   <div class="btn btn-info">
                                     <?php echo anchor('c_master/wrhs_edit/'.$wrhs->code,'<i class="fa fa-edit"></i>'); ?>
                                   </div>

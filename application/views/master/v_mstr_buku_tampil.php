@@ -56,13 +56,11 @@
                                     <thead>
                                         <th>ISBN</th>
                     										<th>Judul</th>
-                    										<th>Penulis</th>
-                    										<th>Category</th>
-                    										<!-- <th>ImgUrl</th> -->
+                    										<th>Penerbit</th>
+                    										<th>Category</th>                    										
                     										<th>Sell Price</th>
                     										<th>Cost Price</th>
-                    										<th>Discount</th>
-                    										<th>Tax</th>
+                    										<th>QTY</th>                    										
                     										<th>Action</th>
                                     </thead>
                                     <tbody>
@@ -71,17 +69,12 @@
                                             <td><?=$buku->isbn; ?></td>
                                             <td><?=$buku->judul; ?></td>
                                             <td><?=$buku->pengarang; ?></td>
-                                            <td><?=$buku->cat; ?></td>
-                                            <!-- <td><?=$buku->imgurl; ?></td> -->
+                                            <td><?=$buku->cat; ?></td>                                         
                                             <td><?=$buku->sellprice; ?></td>
                                             <td><?=$buku->costprice; ?></td>
-                                            <td><?=$buku->discount; ?></td>
-                                            <td><?=$buku->tax; ?></td>
-                                            <td width="200" style="text-align: center;">
+                                            <td><?=$buku->qty; ?></td>                                     
+                                            <td>
                                               <div class="row">
-                                                <!-- <div class="btn btn-info">
-                                                  <i class="fa fa-eye"></i>
-                                                </div> -->
                                                 <div class="btn btn-info">
                                                   <?php echo anchor('c_master/buku_edit/'.$buku->isbn,'<i class="fa fa-edit"></i>'); ?>
                                                 </div>
