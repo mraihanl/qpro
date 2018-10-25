@@ -110,7 +110,8 @@
                       </a>
                       <div id="collapse3" class="panel-collapse collapse">
                         <ul class="list-group">
-                          <li class="list-group-item"><?php echo anchor('c_transaksi/gi_data', 'Good Issue'); ?></li>                         
+                          <li class="list-group-item"><?php echo anchor('c_transaksi/gi_data', 'Good Issue'); ?></li>
+                          <li class="list-group-item"><?php echo anchor('c_transaksi/gr_data', 'Good Receipt'); ?></li>                         
                           <li class="list-group-item"><?php echo anchor('c_transaksi/sales_invoice_input', 'Sales Invoice'); ?></li>                                   
                         </ul>
                       </div>
@@ -128,9 +129,9 @@
                       </a>
                       <div id="collapse4" class="panel-collapse collapse">
                         <ul class="list-group">                        
-                          <li class="list-group-item">Delivery Report</li>
-                          <li class="list-group-item">Sales Report</li>                        
-                          <li class="list-group-item">Incoming Payment Report</li>                        
+                          <li class="list-group-item">Pengiriman Barang All Warehouse</li>
+                          <li class="list-group-item">Pengiriman Barang by Warehouse</li>                        
+                          <li class="list-group-item">Penjualan</li>                        
                         </ul>
                       </div>
                     </div>

@@ -393,5 +393,75 @@
 			$this->m_transaksi->gihapus($where,'xgi');
 			redirect('/c_transaksi/gi_data');
 		}
+
+	//Modul Good Receipt====================================================================
+		public function gr_input()
+	{
+		if($this->input->post('isbn'))
+		{
+			$data = array(
+				'isbn' => $this->input->post('isbn'),
+				'judul' => $this->input->post('judul'),
+				'trandate' => $this->input->post('trandate'),
+				'qty' => $this->input->post('qty')
+			);
+
+			//masukkan ke datanya ke model
+			$this->m_transaksi->inputgdrc($data);		
+		
+		}
+		$this->load->view('templates/header');
+		$this->load->view('transaksi/v_tran_gr_input');
+		$this->load->view('templates/footer');
+	}
+	function gr_edit($isbn){
+				$where = array('isbn' => $isbn);
+				$data['gdrcs'] = $this->m_transaksi->editgdrc($where,'xgr')->result();
+				$this->load->view('templates/header');
+				$this->load->view('transaksi/v_tran_gr_edit', $data);
+				$this->load->view('templates/footer');
+	}
+	function gr_edit_update(){
+				$isbn = $this->input->post('isbn');
+				$judul = $this->input->post('judul');
+				$trandate = $this->input->post('trandate');
+				$qty = $this->input->post('qty');
+
+				$data = array(
+					'judul' => $judul,
+					'trandate' => $trandate,
+					'qty' => $qty,
+				);
+			 
+				$where = array(
+					'isbn' => $isbn
+				);
+			 
+				$this->m_transaksi->updategdrc($where,$data,'xgr');
+				redirect('/c_transaksi/gr_tampil');
+	}
+	public function gr_data()
+	{
+		$query = $this->m_transaksi->tampilgdrcall();
+  		$data['gdrcs'] = null;
+  		if($query<1)
+  		{
+  			echo '';
+  		}
+  		else
+  		{
+   			$data['gdrcs'] = $query;
+  		}
+
+		$this->load->view('templates/header');
+		$this->load->view('transaksi/v_tran_gr_tampil', $data);
+		$this->load->view('templates/footer');
+	}
+	function gr_hapus($code)
+	{
+		$where = array('isbn' => $isbn);
+		$this->m_transaksi->hapusgdrc($where,'xgr');
+		redirect('/c_transaksi/gr_tampil');
+	}
 	}//end class
 ?>

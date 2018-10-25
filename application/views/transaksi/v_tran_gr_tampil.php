@@ -33,7 +33,7 @@
                                   <div class="col-md-6">
                                     <div class="btn btn-info btn-fill">
                                       <i class="fa fa-plus"></i>
-                                      <?php echo anchor('c_master/master_gdrc_input', 'Tambah Data Goods Receipt', array('class' => 'btn-infoa')); ?>
+                                      <?php echo anchor('c_transaksi/gr_input', 'Tambah Data Goods Receipt', array('class' => 'btn-infoa')); ?>
                                     </div>
                                   </div>
                                 </div>
@@ -48,32 +48,29 @@
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
-                                        <th>Code</th>
-										<th>BR Code</th>
-										<th>BR Code FR</th>
-										<th>Transaction Date</th>
-										<th>Action</th>
+                                        <th>ISBN</th>
+                    										<th>Judul</th>
+                    										<th>Transaction Date</th>
+                    										<th>QTY</th>
+                    										
                                     </thead>
                                     <tbody>
                                       <?php foreach($gdrcs as $gdrc){?>
                                         <tr>
-                                            <td><?=$gdrc->code; ?></td>
-                                            <td><?=$gdrc->brcode; ?></td>
-                                            <td><?=$gdrc->brcodefr; ?></td>
+                                            <td><?=$gdrc->isbn; ?></td>
+                                            <td><?=$gdrc->judul; ?></td>
                                             <td><?=$gdrc->trandate; ?></td>
-                                            <td width="200" style="text-align: center;">
-                                              <div class="row">
+                                            <td><?=$gdrc->qty; ?></td>
+                                            <!-- <td width="200" style="text-align: center;">
+                                              <div class="row">                                           
                                                 <div class="btn btn-info">
-                                                  <i class="fa fa-eye"></i>
-                                                </div>
-                                                <div class="btn btn-warning">
-                                                  <?php echo anchor('c_master/gdrc_edit/'.$gdrc->code,'<i class="fa fa-edit"></i>'); ?>
+                                                  <?php echo anchor('c_transaksi/gr_edit/'.$gdrc->isbn,'<i class="fa fa-edit"></i>'); ?>
                                                 </div>
                                                 <div class="btn btn-danger">
-                                                  <?php echo anchor('c_master/master_gdrc_hapus/'.$gdrc->code,'<i class="fa fa-trash"></i>'); ?>
+                                                  <?php echo anchor('c_transaksi/gr_hapus/'.$gdrc->isbn,'<i class="fa fa-trash"></i>'); ?>
                                                 </div>
                                               </div>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                         <?php }?>
                                     </tbody>

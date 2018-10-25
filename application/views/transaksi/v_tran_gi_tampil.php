@@ -59,7 +59,7 @@
                                         <th>Warehouse</th>                  									
                     										<th>Trandate</th>
                     										<th>QTY</th>                    										
-                    										<th>Action</th>
+                    										
                                     </thead>
                                     <tbody>
                                       <?php foreach($results as $gi){?>
@@ -69,7 +69,7 @@
                                             <td><?=$gi->warehouse; ?></td>
                                             <td><?=$gi->trandate; ?></td>                       
                                             <td><?=$gi->qty; ?></td>                                  
-                                            <td>
+                                            <!-- <td>
                                               <div class="row">
                                                 <div class="btn btn-info">
                                                   <?php echo anchor('c_master/buku_edit/'.$gi->isbn,'<i class="fa fa-edit"></i>'); ?>
@@ -78,7 +78,7 @@
                                                   <i class="fa fa-trash" onclick="hapus(<?php echo $gi->isbn; ?>)"></i>
                                                 </div>
                                               </div>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                         <?php }?>
                                     </tbody>
