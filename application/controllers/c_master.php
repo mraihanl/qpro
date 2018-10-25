@@ -5,7 +5,6 @@ class C_master extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('url');
 		$this->load->database();
 		$this->load->model('m_master');
 		$this->load->helper(array('form', 'url'));
@@ -17,41 +16,18 @@ class C_master extends CI_Controller
 	{
 		$this->load->view('templates/header');
 		$this->load->view('master/v_mstr_buku_input', array('error' => ' ' ));
-		$this->load->view('templates/footer');
-
-		//upload foto
-		$config['upload_path']          = './img/';
-        $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = 1000;
-        $config['max_width']            = 720;
-        $config['max_height']           = 1280;
-        $this->load->library('upload', $config);
-        $this->upload->do_upload('gambar');				
+		$this->load->view('templates/footer');		
 
         if($this->input->post('isbn'))
 		{
-			//ambil data dari ketikkan
-			$isbn=$this->input->post('isbn');
-			$judul=$this->input->post('judul');
-			$pengarang=$this->input->post('pengarang');
-			$cat=$this->input->post('cat');
-			$imgurl=$this->input->post('imgurl');
-			$sellprice=$this->input->post('sellprice');
-			$costprice=$this->input->post('costprice');
-			$discount=$this->input->post('discount');
-			$tax=$this->input->post('tax');			
-
-			//data di array-kan
 			$data = array(
-				'isbn' => $isbn,
-				'judul' => $judul,
-				'pengarang' => $pengarang,
-				'cat' => $cat,
-				'imgurl' => $imgurl,
-				'sellprice' => $sellprice,
-				'costprice' => $costprice,
-				'discount' => $discount,
-				'tax' => $tax
+				'isbn' =>$this->input->post('isbn'),
+				'judul' => $this->input->post('judul'),
+				'pengarang' => $this->input->post('pengarang'),
+				'cat' => $this->input->post('cat'),
+				'sellprice' => $this->input->post('sellprice'),
+				'costprice' => $this->input->post('costprice'),
+				'qty' => $this->input->post('qty'),
 			);
 				//masukkan datanya ke model				
 				$this->m_master->inputbuku($data);
@@ -70,24 +46,13 @@ class C_master extends CI_Controller
 	}
 	function update_buku_edit(){
 				$isbn = $this->input->post('isbn');
-				$judul = $this->input->post('judul');
-				$pengarang = $this->input->post('pengarang');
-				$cat = $this->input->post('cat');
-				$imgurl = $this->input->post('imgurl');
-				$sellprice = $this->input->post('sellprice');
-			 	$costprice = $this->input->post('costprice');
-			 	$discount = $this->input->post('discount');
-			 	$tax = $this->input->post('tax');
-
 				$data = array(
-					'judul' => $judul,
-					'pengarang' => $pengarang,
-					'cat' => $cat,
-					'imgurl' => $imgurl,
-					'sellprice' => $sellprice,
-					'costprice' => $costprice,
-					'discount' => $discount,
-					'tax' => $tax,
+					'judul' => $this->input->post('judul'),
+					'pengarang' => $this->input->post('pengarang'),
+					'cat' => $this->input->post('cat'),
+					'sellprice' => $this->input->post('sellprice'),
+					'costprice' => $this->input->post('costprice'),
+					'qty' => $this->input->post('qty'),
 				);
 			 
 				$where = array(

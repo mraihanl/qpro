@@ -28,8 +28,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="content">
-                                
+                            <div class="content">                                
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
@@ -46,8 +45,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Penulis</label>
-                                                <input type="text" class="form-control" placeholder="Penulis" name="pengarang" required>
+                                                <label>Penerbit</label>
+                                                <input type="text" class="form-control" placeholder="Penerbit" name="pengarang" required>
                                             </div>
                                         </div>
 
@@ -58,14 +57,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="row" style="display: none;">
-                                        <div class="col-md-4" style="margin-right: 0px; padding-right: 7px;">                                    
-                                            <label>Gambar</label>
-                                            <input type="text" class="form-control" name="imgurl" value="null" required>
-                                        </div>
-                                        
-                                    </div><br>
 
                                     <div class="row">
                                         <div class="col-md-6">
@@ -91,14 +82,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Discount</label>
+                                                <label>QTY</label>
                                                 <input type="text" class="form-control" placeholder="Discount" name="discount" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Tax</label>
-                                                <input type="text" class="form-control" placeholder="Tax" name="tax" min="1" step="any" required>
                                             </div>
                                         </div>
                                     </div>

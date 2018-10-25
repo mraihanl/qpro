@@ -43,8 +43,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Penulis</label>
-                                                <input type="text" class="form-control" placeholder="Penulis" name="pengarang" required value="<?php echo $buku->pengarang ?>">
+                                                <label>Penerbit</label>
+                                                <input type="text" class="form-control" placeholder="Penerbit" name="pengarang" required value="<?php echo $buku->pengarang ?>">
                                             </div>
                                         </div>
 
@@ -55,17 +55,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="row" style="display: none;">
-                                        <div class="col-md-4" style="margin-right: 0px; padding-right: 7px;">                                    
-                                            <label>Gambar</label>
-                                            <input type="text" class="form-control" name="imgurl" value="null" />
-                                        </div>
-                                        <div class="col-md-3" style="margin-left: 0px; padding-left: 0px;"> 
-                                            <label style="opacity: 0;">A</label>                                          
-                                            
-                                        </div>
-                                    </div><br>
 
                                     <div class="row">
                                         <div class="col-md-6">
@@ -91,14 +80,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Discount</label>
-                                                <input type="text" class="form-control" placeholder="Discount" name="discount" required value="<?php echo $buku->discount ?>">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Tax</label>
-                                                <input type="text" class="form-control" placeholder="Tax" name="tax" min="1" step="any" required value="<?php echo $buku->tax ?>">
+                                                <label>QTY</label>
+                                                <input type="text" class="form-control" placeholder="QTY" name="qty" required value="<?php echo $buku->qty ?>">
                                             </div>
                                         </div>
                                     </div>

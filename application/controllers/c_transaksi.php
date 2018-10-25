@@ -6,42 +6,27 @@
 		{
 			parent::__construct();
 			$this->load->helper('url');
-			$this->load->database();
+			$this->load->database('qpro');
 			$this->load->model('m_transaksi');
 			$this->load->helper('form');
+			$this->load->library('pagination');
 		}
 
 		//Modul Sales Invoice==============================================================
 		public function sales_invoice_input()
 		{
-			if($this->input->post('code'))
+			if($this->input->post('isbn'))
 			{
-				//ambil data dari ketikkan
-				$code=$this->input->post('code');
-				$brcode=$this->input->post('brcode');
-				$cscode=$this->input->post('cscode');
-				$trandate=$this->input->post('trandate');
-				$trantipe=$this->input->post('trantipe');
-				$top=$this->input->post('top');
-				$ponum=$this->input->post('ponum');
-				$amount=$this->input->post('amount');
-				$discount=$this->input->post('discount');
-				$tax=$this->input->post('tax');
-				$netamount=$this->input->post('netamount');
-
 				//data di array-kan
 				$data = array(
-					'code' => $code,
-					'brcode' => $brcode,
-					'cscode' => $cscode,
-					'trandate' => $trandate,
-					'trantipe' => $trantipe,
-					'top' => $top,
-					'ponum' => $ponum,
-					'amount' => $amount,
-					'discount' => $discount,
-					'tax' => $tax,
-					'netamount' => $netamount,
+					'isbn' => $this->input->post('isbn'),					
+					'customer' => $this->input->post('customer'),
+					'trandate' => $this->input->post('trandate'),
+					'top' => $this->input->post('top'),				
+					'amount' => $this->input->post('amount'),
+					'discount' => $this->input->post('discount'),
+					'tax' => $this->input->post('tax'),
+					'netamount' => $this->input->post('netamount')
 				);
 
 				//masukkan ke datanya ke model
@@ -61,31 +46,17 @@
 		}
 		function data_sales_invoice_edit(){
 					//ambil data dari ketikkan
-					$code=$this->input->post('code');
-					$brcode=$this->input->post('brcode');
-					$cscode=$this->input->post('cscode');
-					$trandate=$this->input->post('trandate');
-					$trantipe=$this->input->post('trantipe');
-					$top=$this->input->post('top');
-					$ponum=$this->input->post('ponum');
-					$amount=$this->input->post('amount');
-					$discount=$this->input->post('discount');
-					$tax=$this->input->post('tax');
-					$netamount=$this->input->post('netamount');
-
-					//data di array-kan
+					$code=$this->input->post('code');					
 					$data = array(
-						'brcode' => $brcode,
-						'cscode' => $cscode,
-						'trandate' => $trandate,
-						'trantipe' => $trantipe,
-						'top' => $top,
-						'ponum' => $ponum,
-						'amount' => $amount,
-						'discount' => $discount,
-						'tax' => $tax,
-						'netamount' => $netamount,
-					);
+					'isbn' => $this->input->post('isbn'),					
+					'customer' => $this->input->post('customer'),
+					'trandate' => $this->input->post('trandate'),
+					'top' => $this->input->post('top'),				
+					'amount' => $this->input->post('amount'),
+					'discount' => $this->input->post('discount'),
+					'tax' => $this->input->post('tax'),
+					'netamount' => $this->input->post('netamount')
+				);
 				 
 					$where = array(
 						'code' => $code
@@ -346,6 +317,81 @@
 				$this->m_transaksi->hapus_sc($where,'xrt');
 				redirect('/c_transaksi/SC_memo_data');
 			}
+			
+//Modul Good Issue=========================================================================
+		function gi_input(){
+		if($this->input->post('isbn')){
+			$data = array(
+			"isbn" => $this->input->post('isbn'),
+			"judul" => $this->input->post('judul'),
+			"warehouse" => $this->input->post('warehouse'),
+			"trandate" => $this->input->post('trandate'),
+			"qty" => $this->input->post('qty')
+			);
+			$this->m_transaksi->gi_input($data);
+		// $hasil= $this->db->select('SUM(qty.ybk-qty.xgi)')->from('xgi')
+		// 			->join('ybk','xgi.isbn=ybk.isbn')
+		}			
 
+		$this->load->view('templates/header');
+		$this->load->view('transaksi/v_tran_gi_input', array('error' => ' ' ));
+		$this->load->view('templates/footer');	
+		}
+
+		function auto_isbn(){
+    	if (isset($_GET['term'])) {
+        	$result = $this->m_transaksi->search_isbn($_GET['term']);
+        		if (count($result) > 0) {
+            		foreach ($result as $row)
+                	$arr_result[] = array(
+                    'label'         => $row->isbn,
+                    'description'   => $row->judul,
+             		);
+                	echo json_encode($arr_result);
+        		}
+    	}}
+
+    	function auto_wrhs(){
+        if (isset($_GET['term'])) {
+            $result = $this->m_transaksi->search_wrhs($_GET['term']);
+            	if (count($result) > 0) {
+            		foreach ($result as $row)
+                	$arr_result[] = $row->name;
+                	echo json_encode($arr_result);
+        }}}
+
+	    function gi_data()
+		{
+			$params = array();
+	        $limit_per_page = 5;
+	        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+	        $total_records = $this->m_transaksi->totalgi();
+
+	         if ($total_records > 0) 
+	        {
+	            // get current page records
+	            $params["results"] = $this->m_transaksi->recordgi($limit_per_page, $start_index);
+	             
+	            $config['base_url'] = base_url() . 'c_transaksi/gi_data';
+	            $config['total_rows'] = $total_records;
+	            $config['per_page'] = $limit_per_page;
+	            $config["uri_segment"] = 3;            
+	            $config['full_tag_open'] = '<div class="pagination"><ul>';
+
+	            $this->pagination->initialize($config);
+	             
+	            // build paging links
+	            $params["links"] = $this->pagination->create_links();
+	        }
+	        $this->load->view('templates/header');
+	        $this->load->view('transaksi/v_tran_gi_tampil', $params);
+	        $this->load->view('templates/footer');
+		}
+		function gi_hapus($isbn)
+		{
+			$where = array('isbn' => $isbn);
+			$this->m_transaksi->gihapus($where,'xgi');
+			redirect('/c_transaksi/gi_data');
+		}
 	}//end class
 ?>
