@@ -21,16 +21,17 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>ISBN</label>
-                                            <input type="text" class="form-control" id="title" placeholder="Code" name="isbn">
+                                            <label>Judul Buku</label>
+                                            <input id="title" type="text" class="form-control" placeholder="Judul Buku" name="judul" >
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
+                                    
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Judul Buku</label>
-                                            <input type="text" class="form-control" placeholder="Judul Buku" name="judul" Readonly>
+                                            <label>ISBN</label>
+                                            <input type="text" class="form-control"  placeholder="Code" name="isbn" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -71,10 +72,10 @@
 <script type="text/javascript">
         $(document).ready(function(){
             $('#title').autocomplete({
-                source: "<?php echo site_url('c_transaksi/auto_isbn');?>",      
+                source: "<?php echo site_url('c_transaksi/auto_judul');?>",      
                 select: function (event, ui) {
-                    $('[name="isbn"]').val(ui.item.label); 
-                    $('[name="judul"]').val(ui.item.description); 
+                    $('[name="judul"]').val(ui.item.label);
+                    $('[name="isbn"]').val(ui.item.description);                     
                 }
             });
         });

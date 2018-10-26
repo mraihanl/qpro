@@ -24,6 +24,7 @@ class C_master extends CI_Controller
 				'isbn' =>$this->input->post('isbn'),
 				'judul' => $this->input->post('judul'),
 				'pengarang' => $this->input->post('pengarang'),
+				'tahun' => $this->input->post('tahun'),
 				'cat' => $this->input->post('cat'),
 				'sellprice' => $this->input->post('sellprice'),
 				'costprice' => $this->input->post('costprice'),
@@ -33,7 +34,7 @@ class C_master extends CI_Controller
 				$this->m_master->inputbuku($data);
 				//menyiapkan tampilan pesan sukses
 				$this->session->set_flashdata('sukses',"Data Inserted Successfully");
-				//mengarahkan ke daftar buku(hasil flash data di tampilkan disini)
+				//mengarahkan ke daftar buku(hasil flash data di tampilkan di view)
 				redirect('c_master/master_buku_data/');			
 		}			
 	}
@@ -49,6 +50,7 @@ class C_master extends CI_Controller
 				$data = array(
 					'judul' => $this->input->post('judul'),
 					'pengarang' => $this->input->post('pengarang'),
+					'tahun' => $this->input->post('tahun'),
 					'cat' => $this->input->post('cat'),
 					'sellprice' => $this->input->post('sellprice'),
 					'costprice' => $this->input->post('costprice'),
@@ -231,7 +233,7 @@ class C_master extends CI_Controller
 
 			//masukkan ke datanya ke model
 			$this->m_master->inputwrhs($data);		
-		
+			$this->session->set_flashdata('sukses',"Data Inserted Successfully");
 		}
 		$this->load->view('templates/header');
 		$this->load->view('master/v_mstr_wrhs_input');
@@ -268,6 +270,7 @@ class C_master extends CI_Controller
 				);
 			 
 				$this->m_master->updatewrhs($where,$data,'zbr');
+				$this->session->set_flashdata('sukses',"Data Inserted Successfully");
 				redirect('/c_master/master_wrhs_data');
 	}
 	function master_wrhs_data()

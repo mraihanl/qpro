@@ -11,15 +11,14 @@
             <div class="form-group">
               <div class="row">
                 <div class="col-md-6">
-                  <div class="btn btn-default">
-                    <i class="fa fa-print"></i>
-                  </div>
+                  
                   <div class="btn btn-default">
                     <i class="fa fa-file-excel-o"></i>
                   </div>
-                  <div class="btn btn-default">
-                    <i class="fa fa-filter"></i>
-                  </div>
+                   <?php if ($this->session->flashdata('sukses')) { ?>
+                   <div id="alert" class="alert alert-success">                   
+                   <?= $this->session->flashdata('sukses') ?> </div>
+                   <?php } ?> 
                 </div>
                 <div class="col-md-6">
                   <div class="row">
@@ -32,7 +31,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="btn btn-info btn-fill">
+                      <div class="btn btn-info btn-fill" style="float: right;">
                         <i class="fa fa-plus"></i>
                         <?php echo anchor('c_master/master_wrhs_input', 'Tambah Data Warehouse', array('class' => 'btn-infoa')); ?>
                       </div>
@@ -95,6 +94,8 @@
      } else {
      alert('Hapus data dibatalkan');
      }
-  }            
+  } 
+
+  $("#alert").fadeTo(2000, 500).slideUp(500, function(){$("#alert").slideUp(500);});            
 </script>
 </body>

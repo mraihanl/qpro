@@ -338,27 +338,7 @@
 		$this->load->view('templates/footer');	
 		}
 
-		function auto_isbn(){
-    	if (isset($_GET['term'])) {
-        	$result = $this->m_transaksi->search_isbn($_GET['term']);
-        		if (count($result) > 0) {
-            		foreach ($result as $row)
-                	$arr_result[] = array(
-                    'label'         => $row->isbn,
-                    'description'   => $row->judul,
-             		);
-                	echo json_encode($arr_result);
-        		}
-    	}}
-
-    	function auto_wrhs(){
-        if (isset($_GET['term'])) {
-            $result = $this->m_transaksi->search_wrhs($_GET['term']);
-            	if (count($result) > 0) {
-            		foreach ($result as $row)
-                	$arr_result[] = $row->name;
-                	echo json_encode($arr_result);
-        }}}
+		
 
 	    function gi_data()
 		{
@@ -414,6 +394,7 @@
 		$this->load->view('transaksi/v_tran_gr_input');
 		$this->load->view('templates/footer');
 	}
+
 	function gr_edit($isbn){
 				$where = array('isbn' => $isbn);
 				$data['gdrcs'] = $this->m_transaksi->editgdrc($where,'xgr')->result();
@@ -463,5 +444,27 @@
 		$this->m_transaksi->hapusgdrc($where,'xgr');
 		redirect('/c_transaksi/gr_tampil');
 	}
+
+	function auto_judul(){
+    	if (isset($_GET['term'])) {
+        	$result = $this->m_transaksi->search_judul($_GET['term']);
+        		if (count($result) > 0) {
+            		foreach ($result as $row)
+                	$arr_result[] = array(
+                	'label'   => $row->judul,
+                    'description'         => $row->isbn,
+                    );
+                	echo json_encode($arr_result);
+        		}
+    	}}
+
+    	function auto_wrhs(){
+        if (isset($_GET['term'])) {
+            $result = $this->m_transaksi->search_wrhs($_GET['term']);
+            	if (count($result) > 0) {
+            		foreach ($result as $row)
+                	$arr_result[] = $row->name;
+                	echo json_encode($arr_result);
+        }}}
 	}//end class
 ?>

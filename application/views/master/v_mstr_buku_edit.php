@@ -39,7 +39,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+<!-- ============================================================================================== -->
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -47,23 +47,19 @@
                                                 <input type="text" class="form-control" placeholder="Penerbit" name="pengarang" required value="<?php echo $buku->pengarang ?>">
                                             </div>
                                         </div>
-
+                                         <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Penerbit</label>
+                                                <input type="text" class="form-control" placeholder="Tahun Penerbit" name="tahun" required value="<?php echo $buku->tahun ?>">
+                                            </div>
+                                        </div>                                        
+                                    </div>
+<!-- =============================================================================================== -->
+                                    <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                               <label>Kategori</label>
                                               <input type="text" class="form-control" placeholder="Kategori" name="cat" required value="<?php echo $buku->cat ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Sell Price</label> 
-                                            <div class="input-group">
-                                              <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button">Rp</button>
-                                              </span>
-                                              <input type="text" class="form-control" placeholder="Sell Price" name="sellprice" required value="<?php echo $buku->sellprice ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -76,12 +72,21 @@
                                             </div>
                                         </div>
                                     </div>
-
+<!-- =============================================================================================== -->
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>QTY</label>
                                                 <input type="text" class="form-control" placeholder="QTY" name="qty" required value="<?php echo $buku->qty ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Sell Price</label> 
+                                            <div class="input-group">
+                                              <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">Rp</button>
+                                              </span>
+                                              <input type="text" class="form-control" placeholder="Sell Price" name="sellprice" required value="<?php echo $buku->sellprice ?>">
                                             </div>
                                         </div>
                                     </div>

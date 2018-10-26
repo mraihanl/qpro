@@ -41,7 +41,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+<!-- ================================================================================================ -->
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -52,22 +52,20 @@
 
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label>Tahun Terbit</label>
+                                                <input type="text" class="form-control" placeholder="Tahun Terbit" name="tahun" required>
+                                            </div>
+                                        </div>
+                                    </div>
+<!-- ================================================================================================= -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                               <label>Kategori</label>
                                               <input type="text" class="form-control" placeholder="Kategori" name="cat" required>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Sell Price</label> 
-                                            <div class="input-group">
-                                              <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button">Rp</button>
-                                              </span>
-                                              <input type="text" class="form-control" placeholder="Sell Price" name="sellprice" required>
-                                            </div>
-                                        </div>
                                         <div class="col-md-6">
                                             <label>Costprice</label> 
                                             <div class="input-group">
@@ -78,12 +76,22 @@
                                             </div>
                                         </div>
                                     </div>
-
+<!-- =============================================================================================== -->
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>QTY</label>
                                                 <input type="text" class="form-control" placeholder="Discount" name="discount" required>
+                                            </div>
+                                        </div>
+
+                                         <div class="col-md-6">
+                                            <label>Sell Price</label> 
+                                            <div class="input-group">
+                                              <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">Rp</button>
+                                              </span>
+                                              <input type="text" class="form-control" placeholder="Sell Price" name="sellprice" required>
                                             </div>
                                         </div>
                                     </div>

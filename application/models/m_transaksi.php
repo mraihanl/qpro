@@ -102,9 +102,9 @@ class M_transaksi extends CI_Model
 		$this->db->delete($table);
 	}
 
-	function search_isbn($isbn){
-		$this->db->like( 'isbn', $isbn , 'both');
-		$this->db->order_by('isbn', 'ASC');
+	function search_judul($judul){
+		$this->db->like( 'judul', $judul , 'both');
+		$this->db->order_by('judul', 'ASC');
 		$this->db->limit(10);
 		return $this->db->get('ybk')->result();
 	}

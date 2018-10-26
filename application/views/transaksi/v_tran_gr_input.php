@@ -20,14 +20,14 @@
                             <div class="content">
                                 <form>
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>ISBN</label>
-                                                <input type="text" class="form-control" placeholder="Kode Customer" name="isbn" id="title">
-                                            </div>
+                                        <div class="col-md-12">                                            
                                             <div class="form-group">
                                                 <label>JUDUL</label>
-                                                <input type="text" class="form-control" placeholder="Kode Branch" name="judul">
+                                                <input id="title" type="text" class="form-control" placeholder="Kode Branch" name="judul">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>ISBN</label>
+                                                <input type="text" class="form-control" placeholder="Kode Customer" name="isbn" id="title" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label>TRANSACTION DATE</label>
@@ -49,4 +49,17 @@
             </div>
         </div>
     </form>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#title').autocomplete({
+                source: "<?php echo site_url('c_transaksi/auto_judul');?>",      
+                select: function (event, ui) {
+                    $('[name="judul"]').val(ui.item.label);
+                    $('[name="isbn"]').val(ui.item.description);                     
+                }
+            });
+        });
+
+    </script>
+</body>
     

@@ -10,26 +10,19 @@
                         <div class="content">
                           <div class="form-group">
                             <div class="row">
-                              <div class="col-md-6">
-                                <div class="btn btn-default">
-                                  <i class="fa fa-print"></i>
-                                </div>
+                              <div class="col-md-6">                                
                                 <div class="btn btn-default">
                                   <i class="fa fa-file-excel-o"></i>
-                                </div>
-                                <div class="btn btn-default">
-                                  <i class="fa fa-filter"></i>
-                                </div>                                
+                                </div>                                                               
                                   <?php if ($this->session->flashdata('sukses')) { ?>
-                                  <div class="alert alert-success alert-dismissible">
-                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <div id="alert" class="alert alert-success">
                                   <?= $this->session->flashdata('sukses') ?> </div>
                                   <?php } ?>        
                               </div>                              
                               <div class="col-md-6">
                                 <div class="row">
                                   <div class="col-md-6">
-                                    <div class="input-group">
+                                    <div class="input-group" style="float: right;">
                                       <input type="text" class="form-control" placeholder="Search...">
                                       <span class="input-group-btn">
                                         <button class="btn btn-default" type="button"><i class="pe-7s-search"></i></button>
@@ -37,7 +30,7 @@
                                     </div>
                                   </div>
                                   <div class="col-md-6">
-                                    <div class="btn btn-info btn-fill">
+                                    <div class="btn btn-info btn-fill" style="float: right;">
                                       <i class="fa fa-plus"></i>
                                       <?php echo anchor('c_master/master_buku_input', 'Tambah Data Buku', array('class' => 'btn-infoa')); ?>
                                     </div>
@@ -57,6 +50,7 @@
                                         <th>ISBN</th>
                     										<th>Judul</th>
                     										<th>Penerbit</th>
+                                        <th>Tahun Terbit</th>
                     										<th>Category</th>                    										
                     										<th>Sell Price</th>
                     										<th>Cost Price</th>
@@ -69,7 +63,8 @@
                                             <td><?=$buku->isbn; ?></td>
                                             <td><?=$buku->judul; ?></td>
                                             <td><?=$buku->pengarang; ?></td>
-                                            <td><?=$buku->cat; ?></td>                                         
+                                            <td><?=$buku->tahun; ?></td>
+                                            <td><?=$buku->cat; ?></td>                                    
                                             <td><?=$buku->sellprice; ?></td>
                                             <td><?=$buku->costprice; ?></td>
                                             <td><?=$buku->qty; ?></td>                                     
@@ -100,7 +95,9 @@
                   } else {
                   alert('Hapus data dibatalkan');
                   }
-                }         
+                }
+                
+              $("#alert").fadeTo(2000, 500).slideUp(500, function(){$("#alert").slideUp(500);});         
             </script>
           </body>
           
