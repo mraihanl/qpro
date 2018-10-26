@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h3 class="title">Master Buku</h3>
-                                <p>Tambah Data Buku</p> 
+                                <p>Tambah Data Bukuuu</p> 
                             </div>
                             <div class="col-md-6">
                                <div class="btn btn-info pull-right btn-fill">
