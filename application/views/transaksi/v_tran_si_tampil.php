@@ -51,12 +51,11 @@
                                         <th>ISBN</th>
                     										<th>Customer</th>                    										
                     										<th>Transaction Date</th>                    										
-                    										<th>Pembayaran</th>s                    										
+                    										<th>Pembayaran</th>               										
                     										<th>Amount</th>
                     										<th>Discount</th>
                                         <th>Tax</th>
-                                        <th>Nett Amount</th>
-                    										<th>Action</th>
+                                        <th>Nett Amount</th>                    										
                                     </thead>
                                     <tbody>
                                       <?php foreach($sis as $si){?>

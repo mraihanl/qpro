@@ -1212,11 +1212,15 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .alert {
-    border: 0;
-    border-radius: 0;
-    color: #FFFFFF;
-    padding: 10px 15px;
-    font-size: 14px;
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert-dismissible {
+    padding-right: 4rem;
 }
 
 .container .alert {
@@ -1289,7 +1293,9 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .alert-success {
-    background-color: #a1e82c;
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
 }
 
 .alert-warning {

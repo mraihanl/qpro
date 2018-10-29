@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost:8080',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'qpro',
+	'hostname' => 'db4free.net:3306',
+	'username' => 'heropahlawan_12',
+	'password' => 'aichiteru12',
+	'database' => 'qpro_12',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
