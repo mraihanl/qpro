@@ -47,7 +47,13 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Branch</label>
+                                                <input id="wrhs" type="text" class="form-control" placeholder="Branch" name="cabang">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Role Code</label>
                                                 <input type="text" class="form-control" placeholder="Role Code" name="rocode">
@@ -65,5 +71,12 @@
             </div>
         </div>
     </form>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $( "#wrhs" ).autocomplete({
+              source: "<?php echo site_url('c_transaksi/auto_wrhs/?');?>"
+            });
+        });
+    </script>
 </body>
     

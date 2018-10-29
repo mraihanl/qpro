@@ -2,7 +2,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                      <h3>Data Goods</h3>
+                      <h3>Data Supplier</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -32,7 +32,7 @@
                                   <div class="col-md-6">
                                     <div class="btn btn-info btn-fill" style="float: right;">
                                       <i class="fa fa-plus"></i>
-                                      <?php echo anchor('c_master/master_buku_input', 'Tambah Data Goods', array('class' => 'btn-infoa')); ?>
+                                      <?php echo anchor('c_master/master_sp_input', 'Tambah Data Supplier', array('class' => 'btn-infoa')); ?>
                                     </div>
                                   </div>
                                 </div>
@@ -47,34 +47,22 @@
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
-                                        <th>ISBN</th>
-                    										<th>Judul</th>
-                    										<th>Penerbit</th>
-                                        <th>Tahun Terbit</th>
-                    										<th>Category</th>                    										
-                    										<th>Sell Price</th>
-                    										<th>Cost Price</th>
-                    										<th>QTY</th>                    										
+                                        <th>ID</th>
+                    										<th>Nama Supplier</th>	
                     										<th>Action</th>
                                     </thead>
                                     <tbody>
-                                      <?php foreach($results as $buku){?>
+                                      <?php foreach($results as $sp){?>
                                         <tr>
-                                            <td><?=$buku->isbn; ?></td>
-                                            <td><?=$buku->judul; ?></td>
-                                            <td><?=$buku->pengarang; ?></td>
-                                            <td><?=$buku->tahun; ?></td>
-                                            <td><?=$buku->cat; ?></td>                                    
-                                            <td><?=$buku->sellprice; ?></td>
-                                            <td><?=$buku->costprice; ?></td>
-                                            <td><?=$buku->qty; ?></td>                                     
+                                            <td><?=$sp->id; ?></td>
+                                            <td><?=$sp->nama; ?></td>                                
                                             <td>
                                               <div class="row">
                                                 <div class="btn btn-info">
-                                                  <?php echo anchor('c_master/buku_edit/'.$buku->isbn,'<i class="fa fa-edit"></i>'); ?>
+                                                  <?php echo anchor('c_master/master_sp_edit/'.$sp->id,'<i class="fa fa-edit"></i>'); ?>
                                                 </div>
                                                 <div class="btn btn-danger">
-                                                  <i class="fa fa-trash" onclick="hapus(<?php echo $buku->isbn; ?>)"></i>
+                                                  <i class="fa fa-trash" onclick="hapus(<?php echo $sp->id; ?>)"></i>
                                                 </div>
                                               </div>
                                             </td>
@@ -91,7 +79,7 @@
             <script type="text/javascript">
               function hapus(id){
                   if (confirm("Hapus Data ?")) {
-                    window.location='<?php echo site_url('c_master/master_buku_hapus/'); ?>'+id;
+                    window.location='<?php echo site_url('c_master/master_sp_hapus/'); ?>'+id;
                   } else {
                   alert('Hapus data dibatalkan');
                   }

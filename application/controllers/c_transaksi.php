@@ -140,7 +140,7 @@
 			$this->load->view('templates/footer');
 		}
 
-		//Modul Delivery Order==============================================================
+//Modul Delivery Order==================================================================
 		public function delivery_order_input()
 		{
 			if($this->input->post('code'))
@@ -219,104 +219,7 @@
 				redirect('/c_transaksi/delivery_order_data');
 			}
 
-		//Modul Sales Credit Memo==============================================================
-		public function SC_memo_input()
-		{
-			if($this->input->post('code'))
-			{
-				//ambil data dari ketikkan
-				$code=$this->input->post('code');
-				$brcode=$this->input->post('brcode');
-				$cscode=$this->input->post('cscode');
-				$trandate=$this->input->post('trandate');
-				$sicode=$this->input->post('sicode');
-				$amount=$this->input->post('amount');
-				$discount=$this->input->post('discount');
-				$tax=$this->input->post('tax');
-				$netamount=$this->input->post('netamount');
 
-				//data di array-kan
-				$data = array(
-					'code' => $code,
-					'brcode' => $brcode,
-					'cscode' => $cscode,
-					'trandate' => $trandate,
-					'sicode' => $sicode,
-					'amount' => $amount,
-					'discount' => $discount,
-					'tax' => $tax,
-					'netamount' => $netamount
-				);
-
-				//masukkan ke datanya ke model
-				$this->m_transaksi->input_sc($data);
-			}
-			$this->load->view('templates/header');
-			$this->load->view('transaksi/v_tran_SC_memo_input');
-			$this->load->view('templates/footer');
-		}
-		function SC_memo_edit($code){
-					$where = array('code' => $code);
-					$data['rts'] = $this->m_transaksi->edit_sc($where,'xrt')->result();
-					$this->load->view('templates/header');
-					$this->load->view('transaksi/v_tran_SC_memo_edit', $data);
-					$this->load->view('templates/footer');
-		}
-		function data_SC_memo_edit(){
-					//ambil data dari ketikkan
-					$code=$this->input->post('code');
-					$brcode=$this->input->post('brcode');
-					$cscode=$this->input->post('cscode');
-					$trandate=$this->input->post('trandate');
-					$sicode=$this->input->post('sicode');
-					$amount=$this->input->post('amount');
-					$discount=$this->input->post('discount');
-					$tax=$this->input->post('tax');
-					$netamount=$this->input->post('netamount');
-
-					//data di array-kan
-					$data = array(
-						'brcode' => $brcode,
-						'cscode' => $cscode,
-						'trandate' => $trandate,
-						'sicode' => $sicode,
-						'amount' => $amount,
-						'discount' => $discount,
-						'tax' => $tax,
-						'netamount' => $netamount
-					);
-				 
-					$where = array(
-						'code' => $code
-					);
-				 
-					$this->m_transaksi->update_sc($where,$data,'xrt');
-					redirect('/c_transaksi/SC_memo_data');
-			}	
-
-		public function SC_memo_data()
-		{
-			$query = $this->m_transaksi->tampil_sc();
-	  			$data['rts'] = null;
-	  			if($query<1)
-		  		{
-		  			echo '';
-		  		}
-		  		else
-	  			{
-	   			$data['rts'] =  $query;
-	  			}
-
-			$this->load->view('templates/header');
-			$this->load->view('transaksi/v_tran_SC_memo_tampil', $data);
-			$this->load->view('templates/footer');
-		}
-		function SC_memo_hapus($code)
-			{
-				$where = array('code' => $code);
-				$this->m_transaksi->hapus_sc($where,'xrt');
-				redirect('/c_transaksi/SC_memo_data');
-			}
 			
 //Modul Good Issue=========================================================================
 		function gi_input(){
@@ -324,11 +227,13 @@
 			$data = array(
 			"isbn" => $this->input->post('isbn'),
 			"judul" => $this->input->post('judul'),
-			"warehouse" => $this->input->post('warehouse'),
+			"from" => $this->input->post('from'),
+			"to" => $this->input->post('to'),
 			"trandate" => $this->input->post('trandate'),
 			"qty" => $this->input->post('qty')
 			);
 			$this->m_transaksi->gi_input($data);
+			$this->m_transaksi->inputgdrc($data);
 		// $hasil= $this->db->select('SUM(qty.ybk-qty.xgi)')->from('xgi')
 		// 			->join('ybk','xgi.isbn=ybk.isbn')
 		}			
@@ -338,10 +243,8 @@
 		$this->load->view('templates/footer');	
 		}
 
-		
-
 	    function gi_data()
-		{
+		{			
 			$params = array();
 	        $limit_per_page = 5;
 	        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -362,7 +265,10 @@
 	             
 	            // build paging links
 	            $params["links"] = $this->pagination->create_links();
+	        }else{
+	        	echo '';
 	        }
+			
 	        $this->load->view('templates/header');
 	        $this->load->view('transaksi/v_tran_gi_tampil', $params);
 	        $this->load->view('templates/footer');

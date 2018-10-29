@@ -234,6 +234,7 @@ class C_master extends CI_Controller
 			//masukkan ke datanya ke model
 			$this->m_master->inputwrhs($data);		
 			$this->session->set_flashdata('sukses',"Data Inserted Successfully");
+			redirect('/c_master/master_wrhs_data');
 		}
 		$this->load->view('templates/header');
 		$this->load->view('master/v_mstr_wrhs_input');
@@ -460,5 +461,160 @@ class C_master extends CI_Controller
 		$where = array('code' => $code);
 		$this->m_master->hapusgdrc($where,'xgr');
 		redirect('/c_master/master_gdrc_tampil');
+	}
+
+	//Master Supplier=================================================================================
+	public function master_sp_input()
+	{
+		$this->load->view('templates/header');
+		$this->load->view('master/v_mstr_sp_input', array('error' => ' ' ));
+		$this->load->view('templates/footer');		
+
+        if($this->input->post('nama'))
+		{
+			$data = array(
+				'nama' => $this->input->post('nama')
+			);
+				//masukkan datanya ke model				
+				$this->m_master->inputsp($data);
+				//menyiapkan tampilan pesan sukses
+				$this->session->set_flashdata('sukses',"Data Inserted Successfully");
+				//mengarahkan ke daftar buku(hasil flash data di tampilkan di view)
+				redirect('c_master/master_sp_data/');			
+		}			
+	}
+	function master_sp_edit($id){
+				$where = array('id' => $id);
+				$data['sps'] = $this->m_master->editsp($where,'xsp')->result();
+				$this->load->view('templates/header');
+				$this->load->view('master/v_mstr_sp_edit',$data);
+				$this->load->view('templates/footer');
+	}
+	function master_sp_update(){
+				$id = $this->input->post('id');
+				$nama = $this->input->post('nama');
+				$data = array(
+					'nama' => $nama
+				);			 
+				$where = array(
+					'id' => $id
+				);			 	
+			 				 	
+				$this->m_master->updatesp($where,$data,'xst');
+				$this->session->set_flashdata('sukses',"Data Inserted Successfully");				
+				redirect('/c_master/master_sp_data');
+	}
+	
+	function master_sp_data()
+	{
+		$params = array();
+        $limit_per_page = 5;
+        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $total_records = $this->m_master->totalsp();
+
+         if ($total_records > 0) 
+        {
+            // get current page records
+            $params["results"] = $this->m_master->recordsp($limit_per_page, $start_index);
+             
+            $config['base_url'] = base_url() . 'c_master/master_sp_data';
+            $config['total_rows'] = $total_records;
+            $config['per_page'] = $limit_per_page;
+            $config["uri_segment"] = 3;            
+            $config['full_tag_open'] = '<div class="pagination"><ul>';
+
+            $this->pagination->initialize($config);
+             
+            // build paging links
+            $params["links"] = $this->pagination->create_links();
+        }
+        $this->load->view('templates/header');
+        $this->load->view('master/v_mstr_sp_tampil', $params);
+        $this->load->view('templates/footer');
+	}
+
+	function master_sp_hapus($id)
+	{
+		$where = array('id' => $id);
+		$this->m_master->hapussp($where,'xsp');
+		redirect('/c_master/master_sp_data');
+	}
+
+	//Master Store====================================================================================
+
+	public function master_store_input()
+	{
+		$this->load->view('templates/header');
+		$this->load->view('master/v_mstr_store_input', array('error' => ' ' ));
+		$this->load->view('templates/footer');		
+
+        if($this->input->post('nama'))
+		{
+			$data = array(
+				'nama' => $this->input->post('nama')
+			);
+				//masukkan datanya ke model				
+				$this->m_master->inputstore($data);
+				//menyiapkan tampilan pesan sukses
+				$this->session->set_flashdata('sukses',"Data Inserted Successfully");
+				//mengarahkan ke daftar buku(hasil flash data di tampilkan di view)
+				redirect('c_master/master_store_data/');			
+		}			
+	}
+	function master_store_edit($id){
+				$where = array('id' => $id);
+				$data['stores'] = $this->m_master->editstore($where,'xst')->result();
+				$this->load->view('templates/header');
+				$this->load->view('master/v_mstr_store_edit',$data);
+				$this->load->view('templates/footer');
+	}
+	function master_store_update(){
+				$id = $this->input->post('id');
+				$nama = $this->input->post('nama');
+				$data = array(
+					'nama' => $nama
+				);			 
+				$where = array(
+					'id' => $id
+				);			 	
+			 				 	
+				$this->m_master->updatestore($where,$data,'xst');
+				$this->session->set_flashdata('sukses',"Data Inserted Successfully");				
+				redirect('/c_master/master_store_data');
+	}
+	
+	function master_store_data()
+	{
+		$params = array();
+        $limit_per_page = 5;
+        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $total_records = $this->m_master->totalstore();
+
+         if ($total_records > 0) 
+        {
+            // get current page records
+            $params["results"] = $this->m_master->recordstore($limit_per_page, $start_index);
+             
+            $config['base_url'] = base_url() . 'c_master/master_store_data';
+            $config['total_rows'] = $total_records;
+            $config['per_page'] = $limit_per_page;
+            $config["uri_segment"] = 3;            
+            $config['full_tag_open'] = '<div class="pagination"><ul>';
+
+            $this->pagination->initialize($config);
+             
+            // build paging links
+            $params["links"] = $this->pagination->create_links();
+        }
+        $this->load->view('templates/header');
+        $this->load->view('master/v_mstr_store_tampil', $params);
+        $this->load->view('templates/footer');
+	}
+
+	function master_store_hapus($id)
+	{
+		$where = array('id' => $id);
+		$this->m_master->hapusstore($where,'xst');
+		redirect('/c_master/master_store_data');
 	}
 }

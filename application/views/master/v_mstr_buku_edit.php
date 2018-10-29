@@ -1,12 +1,5 @@
-<head>
-    <script>
-        function berhasil() {
-        alert("Data berhasil dimasukkan!");
-        }
-    </script>
-</head>
 <body>
-<?php echo form_open_multipart('c_master/update_buku_edit');?>
+<?php echo form_open_multipart('c_master/update_sp_update');?>
 <!-- <form method="post"> -->
 <div class="content">
             <div class="container-fluid">
@@ -14,8 +7,8 @@
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-6">
-                                <h3 class="title">Master Buku</h3>
-                                <p>Edit Data Buku</p> 
+                                <h3 class="title">Master Goods</h3>
+                                <p>Edit Data Goods</p> 
                             </div>
                             <div class="col-md-6">
                                <div class="btn btn-info pull-right btn-fill">
@@ -77,7 +70,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>QTY</label>
-                                                <input type="text" class="form-control" placeholder="QTY" name="qty" required value="<?php echo $buku->qty ?>">
+                                                <input type="text" class="form-control" placeholder="QTY" name="qty" readonly value="<?php echo $buku->qty ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-6">

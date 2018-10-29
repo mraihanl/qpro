@@ -113,7 +113,7 @@ class M_master extends CI_Model
 		return $query->result();
 	}
 
-	//Modul Charges==============================================================
+	//Modul Charges========================================================================
 	function inputchgs($data)
 	{
 		$this->db->insert('ych', $data);
@@ -136,5 +136,94 @@ class M_master extends CI_Model
 		$query=$this->db->get('ych');
 		return $query->result();
 	}
+
+	//Modul Supplier=========================================================================
+	function inputsp($data)
+	{
+		$this->db->insert('xsp', $data);
+	}
+	function tampilsp()
+	{
+		$query=$this->db->get('xsp');
+		return $query->result();
+	}
+	function hapussp($where,$table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+	function editsp($where,$table)
+	{		
+	return $this->db->get_where($table,$where);
+	}
+	function updatesp($where,$data,$table)
+	{
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}	
 	
+	public function recordsp($limit, $start) 
+    {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get("xsp");
+ 
+        if ($query->num_rows() > 0) 
+        {
+            foreach ($query->result() as $row) 
+            {
+                $data[] = $row;
+            }             
+            return $data;
+        } 
+        return false;
+    }     
+    public function totalsp() 
+    {
+        return $this->db->count_all("xsp");
+    }
+
+    //Modul Store======================================================================================
+    function inputstore($data)
+	{
+		$this->db->insert('xst', $data);
+	}
+	function tampilstore()
+	{
+		$query=$this->db->get('xst');
+		return $query->result();
+	}
+	function hapusstore($where,$table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+	function editstore($where,$table)
+	{		
+	return $this->db->get_where($table,$where);
+	}
+	function updatestore($where,$data,$table)
+	{
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}	
+	
+	public function recordstore($limit, $start) 
+    {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get("xst");
+ 
+        if ($query->num_rows() > 0) 
+        {
+            foreach ($query->result() as $row) 
+            {
+                $data[] = $row;
+            }             
+            return $data;
+        } 
+        return false;
+    }     
+    public function totalstore() 
+    {
+        return $this->db->count_all("xst");
+    }
 }

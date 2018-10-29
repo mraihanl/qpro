@@ -91,9 +91,11 @@
                       </a>
                       <div id="collapse2" class="panel-collapse collapse">
                         <ul class="list-group">
-                          <li class="list-group-item"><?php echo anchor('c_master/master_buku_data', 'Master Buku'); ?></li>
+                          <li class="list-group-item"><?php echo anchor('c_master/master_buku_data', 'Master Goods'); ?></li>
                           <li class="list-group-item"><?php echo anchor('c_master/master_cust_data', 'Master Customer'); ?></li>
-                          <li class="list-group-item"><?php echo anchor('c_master/master_wrhs_data', 'Master Warehouse'); ?></li>                          
+                          <li class="list-group-item"><?php echo anchor('c_master/master_wrhs_data', 'Master Warehouse'); ?></li>    
+                          <li class="list-group-item"><?php echo anchor('c_master/master_sp_data', 'Master Supplier'); ?></li>
+                          <li class="list-group-item"><?php echo anchor('c_master/master_store_data', 'Master Store'); ?></li>                      
                         </ul>
                       </div>
                     </div>
@@ -110,9 +112,11 @@
                       </a>
                       <div id="collapse3" class="panel-collapse collapse">
                         <ul class="list-group">
-                          <li class="list-group-item"><?php echo anchor('c_transaksi/gi_data', 'Good Issue'); ?></li>
-                          <li class="list-group-item"><?php echo anchor('c_transaksi/gr_data', 'Good Receipt'); ?></li>                         
-                          <li class="list-group-item"><?php echo anchor('c_transaksi/sales_invoice_data', 'Good Sold'); ?></li>                                   
+                          <li class="list-group-item"><?php echo anchor('c_transaksi/gi_data', 'Goods Issue'); ?></li>
+                          <li class="list-group-item"><?php echo anchor('c_transaksi/gr_data', 'Goods Receipt'); ?></li>                         
+                          <li class="list-group-item"><?php echo anchor('c_transaksi/sales_invoice_data', 'Goods Sold'); ?></li>    
+                          <li class="list-group-item">Goods Return</li>
+                          <li class="list-group-item">Payment</li>                           
                         </ul>
                       </div>
                     </div>
@@ -129,9 +133,12 @@
                       </a>
                       <div id="collapse4" class="panel-collapse collapse">
                         <ul class="list-group">                        
-                          <li class="list-group-item">Pengiriman Barang All Warehouse</li>
-                          <li class="list-group-item">Pengiriman Barang by Warehouse</li>                        
-                          <li class="list-group-item">Penjualan</li>                        
+                          <li class="list-group-item">Stock on Hand</li>
+                          <li class="list-group-item">Stock Mutation</li>                        
+                          <li class="list-group-item">Sales Report</li>
+                          <li class="list-group-item">Incoming Payment</li>
+                          <li class="list-group-item">AR Aging</li>
+                          <li class="list-group-item">Best Seller</li>                        
                         </ul>
                       </div>
                     </div>

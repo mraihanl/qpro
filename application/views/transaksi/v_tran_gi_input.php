@@ -36,10 +36,16 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Warehouse</label>
-                                            <input id="wrhs" type="text" class="form-control" placeholder="Warehouse" name="warehouse">
+                                            <label>From</label>
+                                            <input id="wrhs" type="text" class="form-control" placeholder="Warehouse" name="from">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>to</label>
+                                            <input id="wrhs2" type="text" class="form-control" placeholder="Warehouse" name="to">
                                         </div>
                                     </div>
                                 </div>
@@ -82,6 +88,12 @@
 
          $(document).ready(function(){
             $( "#wrhs" ).autocomplete({
+              source: "<?php echo site_url('c_transaksi/auto_wrhs/?');?>"
+            });
+        });
+
+         $(document).ready(function(){
+            $( "#wrhs2" ).autocomplete({
               source: "<?php echo site_url('c_transaksi/auto_wrhs/?');?>"
             });
         });

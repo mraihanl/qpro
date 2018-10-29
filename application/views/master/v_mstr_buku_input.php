@@ -17,8 +17,8 @@
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-6">
-                                <h3 class="title">Master Buku</h3>
-                                <p>Tambah Data Bukuuu</p> 
+                                <h3 class="title">Master Goods</h3>
+                                <p>Tambah Data Goods</p> 
                             </div>
                             <div class="col-md-6">
                                <div class="btn btn-info pull-right btn-fill">
@@ -81,7 +81,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>QTY</label>
-                                                <input type="text" class="form-control" placeholder="Discount" name="discount" required>
+                                                <input type="text" class="form-control" placeholder="QTY" name="discount" readonly>
                                             </div>
                                         </div>
 

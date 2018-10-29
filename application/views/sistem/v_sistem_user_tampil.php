@@ -11,18 +11,13 @@
                           <div class="form-group">
                             <div class="row">
                               <div class="col-md-6">
-                                <div class="btn btn-default">
-                                  <i class="fa fa-print"></i>
-                                </div>
+                                
                                 <div class="btn btn-default">
                                   <i class="fa fa-file-excel-o"></i>
                                 </div>
-                                <div class="btn btn-default">
-                                  <i class="fa fa-filter"></i>
-                                </div>
+                                
                                 <?php if ($this->session->flashdata('sukses')) { ?>
-                                  <div class="alert alert-success alert-dismissible">
-                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <div id="alert" class="alert alert-success">                                  
                                   <?= $this->session->flashdata('sukses') ?> </div>
                                   <?php } ?> 
                               </div>
@@ -39,7 +34,7 @@
                                   <div class="col-md-6">
                                     <a href="qinput-user.html" target="blank">
                                     <div class="btn btn-info btn-fill">
-                                      <i class="fa fa-plus"></i>
+                                      <i style="color: white;" class="fa fa-plus"></i>
                                      <?php echo anchor('c_sistem/user_input', 'New User', array('class' => 'btn-infoa')); ?>
                                     </div>
                                     </a>
@@ -60,6 +55,7 @@
                                         <!-- <th>Password</th> -->
                                         <th>Name</th>
                                         <th>Mail</th>
+                                        <th>Branch</th>
                                         <th>Role</th>
                                     </thead>
                                     <tbody>
@@ -69,6 +65,7 @@
                                             <!-- <td><?=$user->password; ?></td> -->
                                             <td><?=$user->name; ?></td>
                                             <td><?=$user->mail; ?></td>
+                                            <td><?=$user->cabang; ?></td>
                                             <td><?=$user->rocode; ?></td>
                                             <td width="200" style="text-align: center;">
                                               <div class="row">                                            
@@ -97,5 +94,7 @@
                   alert('Hapus data dibatalkan');
                   }
                 }
+
+                $("#alert").fadeTo(2000, 500).slideUp(500, function(){$("#alert").slideUp(500);});
             </script>
           </body>

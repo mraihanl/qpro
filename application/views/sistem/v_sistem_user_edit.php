@@ -26,11 +26,7 @@
                                             <div class="form-group">
                                                 <label>Username</label>
                                                 <input type="text" class="form-control" placeholder="Username" name="username" value="<?php echo $user->username?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Password</label>
-                                                <input type="password" class="form-control" placeholder="Password" name="password" >
-                                            </div>
+                                            </div>                                            
                                         </div>
                                     </div>
 
@@ -48,9 +44,15 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Role Code</label>
+                                                <label>Branch</label>
+                                                <input id="wrhs" type="text" class="form-control" placeholder="Branch" name="cabang"  value="<?php echo $user->cabang?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Role</label>
                                                 <input type="text" class="form-control" placeholder="Role Code" name="rocode"  value="<?php echo $user->rocode?>">
                                             </div>
                                         </div>
@@ -66,5 +68,12 @@
             </div>
         </div>
     </form>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $( "#wrhs" ).autocomplete({
+              source: "<?php echo site_url('c_transaksi/auto_wrhs/?');?>"
+            });
+        });
+    </script>
 </body>
     
