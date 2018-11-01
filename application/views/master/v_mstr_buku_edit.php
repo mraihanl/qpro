@@ -1,5 +1,5 @@
 <body>
-<?php echo form_open_multipart('c_master/update_sp_update');?>
+<?php echo form_open_multipart('c_master/update_buku_edit');?>
 <!-- <form method="post"> -->
 <div class="content">
             <div class="container-fluid">
@@ -49,13 +49,23 @@
                                     </div>
 <!-- =============================================================================================== -->
                                     <div class="row">
+                                         <div class="col-md-6">
+                                            <div class="form-group">
+                                              <label>Edisi</label>
+                                              <input type="text" class="form-control" placeholder="Edisi" name="edisi" required value="<?php echo $buku->edisi ?>">
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                               <label>Kategori</label>
                                               <input type="text" class="form-control" placeholder="Kategori" name="cat" required value="<?php echo $buku->cat ?>">
                                             </div>
-                                        </div>
+                                        </div>                                        
+                                    </div>
+<!-- =============================================================================================== -->
+                                    <div class="row">
                                         <div class="col-md-6">
+                                            
                                             <label>Costprice</label> 
                                             <div class="input-group">
                                               <span class="input-group-btn">
@@ -63,15 +73,7 @@
                                               </span>
                                               <input type="text" class="form-control" placeholder="Costprice" name="costprice" required value="<?php echo $buku->costprice ?>">
                                             </div>
-                                        </div>
-                                    </div>
-<!-- =============================================================================================== -->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>QTY</label>
-                                                <input type="text" class="form-control" placeholder="QTY" name="qty" readonly value="<?php echo $buku->qty ?>">
-                                            </div>
+                                        
                                         </div>
                                         <div class="col-md-6">
                                             <label>Sell Price</label> 
@@ -84,7 +86,7 @@
                                         </div>
                                     </div>
                                         
-                                        <button name="submit" type="submit" class="btn btn-info btn-fill pull-right" >Submit</button>
+                                        <button name="submit" type="submit" class="btn btn-info btn-fill pull-right" style="margin-top: 10px;" >Submit</button>
                                                                            
                                     <div class="clearfix"></div>   
                                 </form>                          

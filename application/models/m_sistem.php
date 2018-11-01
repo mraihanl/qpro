@@ -24,5 +24,11 @@ class M_sistem extends CI_Model
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
+	function search_role($rolename){
+		$this->db->like( 'rolename', $rolename , 'both');
+		$this->db->order_by('rolename', 'ASC');
+		$this->db->limit(10);
+		return $this->db->get('zro')->result();
+	}
 }
 ?>

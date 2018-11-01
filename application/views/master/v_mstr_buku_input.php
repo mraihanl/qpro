@@ -61,11 +61,19 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                              <label>Edisi</label>
+                                              <input type="text" class="form-control" placeholder="Edisi" name="edisi" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                               <label>Kategori</label>
                                               <input type="text" class="form-control" placeholder="Kategori" name="cat" required>
                                             </div>
-                                        </div>
-
+                                        </div>                                        
+                                    </div>
+<!-- =============================================================================================== -->
+                                    <div class="row">
                                         <div class="col-md-6">
                                             <label>Costprice</label> 
                                             <div class="input-group">
@@ -73,16 +81,7 @@
                                                 <button class="btn btn-default" type="button">Rp</button>
                                               </span>
                                               <input type="text" class="form-control" placeholder="Costprice" name="costprice" required>
-                                            </div>
-                                        </div>
-                                    </div>
-<!-- =============================================================================================== -->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>QTY</label>
-                                                <input type="text" class="form-control" placeholder="QTY" name="discount" readonly>
-                                            </div>
+                                            </div>                                        
                                         </div>
 
                                          <div class="col-md-6">
@@ -96,7 +95,7 @@
                                         </div>
                                     </div>
                                         
-                                        <button type="submit" name="submit" class="btn btn-info btn-fill pull-right" >Submit</button>
+                                        <button type="submit" name="submit" class="btn btn-info btn-fill pull-right" style="margin-top: 10px;">Submit</button>
                                                                            
                                     <div class="clearfix"></div>                             
                             </div>

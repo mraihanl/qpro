@@ -51,10 +51,10 @@
                     										<th>Judul</th>
                     										<th>Penerbit</th>
                                         <th>Tahun Terbit</th>
+                                        <th>Edisi</th>
                     										<th>Category</th>                    										
                     										<th>Sell Price</th>
                     										<th>Cost Price</th>
-                    										<th>QTY</th>                    										
                     										<th>Action</th>
                                     </thead>
                                     <tbody>
@@ -64,10 +64,10 @@
                                             <td><?=$buku->judul; ?></td>
                                             <td><?=$buku->pengarang; ?></td>
                                             <td><?=$buku->tahun; ?></td>
+                                            <td><?=$buku->edisi; ?></td>
                                             <td><?=$buku->cat; ?></td>                                    
                                             <td><?=$buku->sellprice; ?></td>
-                                            <td><?=$buku->costprice; ?></td>
-                                            <td><?=$buku->qty; ?></td>                                     
+                                            <td><?=$buku->costprice; ?></td>      
                                             <td>
                                               <div class="row">
                                                 <div class="btn btn-info">

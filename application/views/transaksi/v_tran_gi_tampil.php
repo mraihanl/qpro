@@ -11,18 +11,13 @@
                           <div class="form-group">
                             <div class="row">
                               <div class="col-md-6">
-                                <div class="btn btn-default">
-                                  <i class="fa fa-print"></i>
-                                </div>
+                                
                                 <div class="btn btn-default">
                                   <i class="fa fa-file-excel-o"></i>
                                 </div>
-                                <div class="btn btn-default">
-                                  <i class="fa fa-filter"></i>
-                                </div>                                
+                                                                
                                   <?php if ($this->session->flashdata('sukses')) { ?>
-                                  <div class="alert alert-success alert-dismissible">
-                                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                  <div class="alert alert-success">                                  
                                   <?= $this->session->flashdata('sukses') ?> </div>
                                   <?php } ?>        
                               </div>                              

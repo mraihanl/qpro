@@ -23,12 +23,12 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" name="username">
+                                                <label>Username*</label>
+                                                <input type="text" class="form-control" placeholder="Username" name="username" required>
                                             </div>
                                             <div class="form-group">
-                                                <label>Password</label>
-                                                <input type="password" class="form-control" placeholder="Password" name="password">
+                                                <label>Password*</label>
+                                                <input type="password" class="form-control" placeholder="Password" name="password" required>
                                             </div>
                                         </div>
                                     </div>
@@ -40,8 +40,8 @@
                                                 <input type="email" class="form-control" placeholder="Email" name="mail">
                                             </div>
                                             <div class="form-group">
-                                                  <label>Nama</label>
-                                                  <input type="text" class="form-control" placeholder="Nama" name="name">
+                                                  <label>Nama*</label>
+                                                  <input type="text" class="form-control" placeholder="Nama" name="name" required>
                                             </div>
                                         </div>
                                     </div>
@@ -49,14 +49,14 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Branch</label>
-                                                <input id="wrhs" type="text" class="form-control" placeholder="Branch" name="cabang">
+                                                <label>Branch*</label>
+                                                <input id="wrhs" type="text" class="form-control" placeholder="Branch" name="cabang" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Role Code</label>
-                                                <input type="text" class="form-control" placeholder="Role Code" name="rocode">
+                                                <label>Role*</label><br/>
+                                                <input id="role" type="text" class="form-control" placeholder="Role Code" name="rocode" required>
                                             </div>
                                         </div>
                                     </div>
@@ -75,6 +75,12 @@
         $(document).ready(function(){
             $( "#wrhs" ).autocomplete({
               source: "<?php echo site_url('c_transaksi/auto_wrhs/?');?>"
+            });
+        });
+
+        $(document).ready(function(){
+            $( "#role" ).autocomplete({
+              source: "<?php echo site_url('c_sistem/auto_role/?');?>"
             });
         });
     </script>

@@ -8,7 +8,7 @@
                         <div class="col-md-6">
                             <h3 class="title">Good Issue</h3> 
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" style="margin-bottom: 10px;">
                            <div class="btn btn-info pull-right btn-fill">
                             <i class="fa fa-file-o"></i>
                             <?php echo anchor('c_transaksi/gi_data', 'Daftar Good Issue', array('class' => 'btn-infoa')); ?>
@@ -39,7 +39,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>From</label>
-                                            <input id="wrhs" type="text" class="form-control" placeholder="Warehouse" name="from">
+                                            <input id="wrhs" type="text" class="form-control" placeholder="Warehouse" name="from" value="<?php echo $this->session->userdata("cabang"); ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

@@ -93,7 +93,8 @@ class M_transaksi extends CI_Model
 	}
 	function gi_tampil()
 	{
-		$query=$this->db->get('xgi');
+		$sess=$this->session->userdata("cabang");
+		$query=$this->db->get_where('xgi',array('from'=>$sess));
 		return $query->result();
 	}
 	function gihapus($where,$table)
@@ -124,7 +125,8 @@ class M_transaksi extends CI_Model
     public function recordgi($limit, $start) 
     {
         $this->db->limit($limit, $start);
-        $query = $this->db->get("xgi");
+        $sess=$this->session->userdata("cabang");
+		$query=$this->db->get_where('xgi',array('from'=>$sess));
  
         if ($query->num_rows() > 0) 
         {
@@ -159,7 +161,28 @@ class M_transaksi extends CI_Model
 	{
 		$query=$this->db->get('xgr');
 		return $query->result();
-	}    
+	}
+	public function totalgr() 
+    {
+        return $this->db->count_all("xgr");
+    }
+
+    public function recordgr($limit, $start) 
+    {
+        $this->db->limit($limit, $start);
+        $sess=$this->session->userdata("cabang");
+		$query=$this->db->get_where('xgr',array('to'=>$sess));
+ 
+        if ($query->num_rows() > 0) 
+        {
+            foreach ($query->result() as $row) 
+            {
+                $data[] = $row;
+            }             
+            return $data;
+        } 
+        return false;
+    }    
 
 }
 ?>
