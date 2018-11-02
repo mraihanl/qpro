@@ -50,8 +50,11 @@
                                     <thead>
                                         <th>ISBN</th>
                     										<th>Judul</th>
+                                        <th>From</th>
+                                        <th>To</th>
                     										<th>Transaction Date</th>
                     										<th>QTY</th>
+                                        <th>Confirm</th>
                     										
                                     </thead>
                                     <tbody>
@@ -59,8 +62,11 @@
                                         <tr>
                                             <td><?=$gdrc->isbn; ?></td>
                                             <td><?=$gdrc->judul; ?></td>
+                                            <td><?=$gdrc->from; ?></td>
+                                            <td><?=$gdrc->to; ?></td>
                                             <td><?=$gdrc->trandate; ?></td>
                                             <td><?=$gdrc->qty; ?></td>
+                                            <td><?=$gdrc->confirm; ?></td>
                                             <!-- <td width="200" style="text-align: center;">
                                               <div class="row">                                           
                                                 <div class="btn btn-info">

@@ -16,21 +16,15 @@ class C_sistem extends CI_Controller
 		$this->load->view('sistem/v_sistem_user_input', array('error' => ' ' ));
 		$this->load->view('templates/footer');
 		if($this->input->post('username'))
-		{
-			//ambil data dari ketikkan
-			$username=$this->input->post('username');
-			$password=md5($this->input->post('password'));
-			$mail=$this->input->post('mail');
-			$name=$this->input->post('name');
-			$rocode=$this->input->post('rocode');		
-
+		{			
 			//data di array-kan
 			$data = array(
-				'username' => $username,
-				'password' => $password,
-				'mail' => $mail,
-				'name' => $name,
-				'rocode' => $rocode				
+				'username' => $this->input->post('username'),
+				'password' => md5($this->input->post('password')),
+				'mail' => $this->input->post('mail'),
+				'name' => $this->input->post('name'),
+				'cabang' => $this->input->post('cabang'),
+				'rocode' => $this->input->post('rocode')				
 			);
 
 			//masukkan ke datanya ke model
@@ -68,20 +62,13 @@ class C_sistem extends CI_Controller
 
 	function user_update()
 	{
-			//ambil data dari field
 			$username=$this->input->post('username');
-			$password=md5($this->input->post('password'));
-			$mail=$this->input->post('mail');
-			$name=$this->input->post('name');
-			$rocode=$this->input->post('rocode');		
-
 			//data di array-kan
-			$data = array(
-				'username' => $username,
-				'password' => $password,
-				'mail' => $mail,
-				'name' => $name,
-				'rocode' => $rocode				
+			$data = array(				
+				'mail' => $this->input->post('mail'),
+				'name' => $this->input->post('name'),
+				'cabang' => $this->input->post('cabang'),
+				'rocode' => $this->input->post('rocode')			
 			);
 
 			$where = array(
@@ -100,6 +87,15 @@ class C_sistem extends CI_Controller
 		$this->m_sistem->hapususer($where,'zus');
 		redirect('/c_sistem/user_data');
 	}
+
+	function auto_wrhs(){
+        if (isset($_GET['term'])) {
+            $result = $this->m_transaksi->search_wrhs($_GET['term']);
+            	if (count($result) > 0) {
+            		foreach ($result as $row)
+                	$arr_result[] = $row->name;
+                	echo json_encode($arr_result);
+        }}}
 
 }//end of file
 ?>

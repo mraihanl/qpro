@@ -55,9 +55,10 @@
                                 <table class="table table-hover table-striped">
                                     <thead>
                                         <th>ISBN</th>
-                    										<th>Judul</th>  
-                                        <th>Warehouse</th>                  									
-                    										<th>Trandate</th>
+                    										<th>Judul</th> 
+                                        <th>From</th> 
+                                        <th>To</th>                  									
+                    										<th>Transaction Date</th>
                     										<th>QTY</th>                    										
                     										
                                     </thead>
@@ -66,7 +67,8 @@
                                         <tr>
                                             <td><?=$gi->isbn; ?></td>
                                             <td><?=$gi->judul; ?></td>
-                                            <td><?=$gi->warehouse; ?></td>
+                                            <td><?=$gi->from; ?></td>
+                                            <td><?=$gi->to; ?></td>
                                             <td><?=$gi->trandate; ?></td>                       
                                             <td><?=$gi->qty; ?></td>                                  
                                             <!-- <td>
