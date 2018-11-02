@@ -25,10 +25,11 @@ class C_master extends CI_Controller
 				'judul' => $this->input->post('judul'),
 				'pengarang' => $this->input->post('pengarang'),
 				'tahun' => $this->input->post('tahun'),
+				'edisi' => $this->input->post('edisi'),
 				'cat' => $this->input->post('cat'),
 				'sellprice' => $this->input->post('sellprice'),
-				'costprice' => $this->input->post('costprice'),
-				'qty' => $this->input->post('qty'),
+				'costprice' => $this->input->post('costprice')
+				
 			);
 				//masukkan datanya ke model				
 				$this->m_master->inputbuku($data);
@@ -51,10 +52,11 @@ class C_master extends CI_Controller
 					'judul' => $this->input->post('judul'),
 					'pengarang' => $this->input->post('pengarang'),
 					'tahun' => $this->input->post('tahun'),
+					'edisi' => $this->input->post('edisi'),
 					'cat' => $this->input->post('cat'),
 					'sellprice' => $this->input->post('sellprice'),
 					'costprice' => $this->input->post('costprice'),
-					'qty' => $this->input->post('qty'),
+					
 				);
 			 
 				$where = array(

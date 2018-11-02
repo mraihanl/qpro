@@ -15,11 +15,11 @@
                                 <div class="btn btn-default">
                                   <i class="fa fa-file-excel-o"></i>
                                 </div>
-                                
+                                <div style="margin-top: 10px;">
                                 <?php if ($this->session->flashdata('sukses')) { ?>
-                                  <div id="alert" class="alert alert-success">                                  
+                                  <div id="alert" class="alert alert-success">                             
                                   <?= $this->session->flashdata('sukses') ?> </div>
-                                  <?php } ?> 
+                                  <?php } ?></div>
                               </div>
                               <div class="col-md-6">
                                 <div class="row">
@@ -31,13 +31,11 @@
                                       </span>
                                     </div>
                                   </div>
-                                  <div class="col-md-6">
-                                    <a href="qinput-user.html" target="blank">
-                                    <div class="btn btn-info btn-fill">
+                                  <div class="col-md-6">                                    
+                                    <div class="btn btn-info btn-fill" style="float: right;">
                                       <i style="color: white;" class="fa fa-plus"></i>
                                      <?php echo anchor('c_sistem/user_input', 'New User', array('class' => 'btn-infoa')); ?>
-                                    </div>
-                                    </a>
+                                    </div>                                    
                                   </div>
                                 </div>
                               </div>

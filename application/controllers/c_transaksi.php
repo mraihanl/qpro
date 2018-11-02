@@ -233,7 +233,9 @@
 			"qty" => $this->input->post('qty')
 			);
 			$this->m_transaksi->gi_input($data);
-			$this->m_transaksi->inputgdrc($data);
+
+			$this->session->set_flashdata('sukses',"Data Inserted Successfully");
+			redirect('c_transaksi/gi_data/');
 		// $hasil= $this->db->select('SUM(qty.ybk-qty.xgi)')->from('xgi')
 		// 			->join('ybk','xgi.isbn=ybk.isbn')
 		}			
@@ -268,6 +270,16 @@
 	        }else{
 	        	echo '';
 	        }
+		// $query = $this->m_transaksi->gi_tampil();
+  // 		$data['gis'] = null;
+  // 		if($query<1)
+  // 		{
+  // 			echo '';
+  // 		}
+  // 		else
+  // 		{
+  //  			$data['gis'] = $query;
+  // 		}
 			
 	        $this->load->view('templates/header');
 	        $this->load->view('transaksi/v_tran_gi_tampil', $params);
@@ -329,19 +341,42 @@
 	}
 	public function gr_data()
 	{
-		$query = $this->m_transaksi->tampilgdrcall();
-  		$data['gdrcs'] = null;
-  		if($query<1)
-  		{
-  			echo '';
-  		}
-  		else
-  		{
-   			$data['gdrcs'] = $query;
-  		}
+		$params = array();
+	        $limit_per_page = 5;
+	        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+	        $total_records = $this->m_transaksi->totalgr();
+
+	         if ($total_records > 0) 
+	        {
+	            // get current page records
+	            $params["results"] = $this->m_transaksi->recordgr($limit_per_page, $start_index);
+	             
+	            $config['base_url'] = base_url() . 'c_transaksi/gr_data';
+	            $config['total_rows'] = $total_records;
+	            $config['per_page'] = $limit_per_page;
+	            $config["uri_segment"] = 3;            
+	            $config['full_tag_open'] = '<div class="pagination"><ul>';
+
+	            $this->pagination->initialize($config);
+	             
+	            // build paging links
+	            $params["links"] = $this->pagination->create_links();
+	        }else{
+	        	echo '';
+	        }
+		// $query = $this->m_transaksi->tampilgdrcall();
+  // 		$data['gdrcs'] = null;
+  // 		if($query<1)
+  // 		{
+  // 			echo '';
+  // 		}
+  // 		else
+  // 		{
+  //  			$data['gdrcs'] = $query;
+  // 		}
 
 		$this->load->view('templates/header');
-		$this->load->view('transaksi/v_tran_gr_tampil', $data);
+		$this->load->view('transaksi/v_tran_gr_tampil', $params);
 		$this->load->view('templates/footer');
 	}
 	function gr_hapus($code)
@@ -357,8 +392,8 @@
         		if (count($result) > 0) {
             		foreach ($result as $row)
                 	$arr_result[] = array(
-                	'label'   => $row->judul,
-                    'description'         => $row->isbn,
+                	'label' => $row->judul,
+                    'description' => $row->isbn,
                     );
                 	echo json_encode($arr_result);
         		}

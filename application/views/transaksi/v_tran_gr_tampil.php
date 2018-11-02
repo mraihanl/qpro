@@ -10,15 +10,11 @@
                           <div class="form-group">
                             <div class="row">
                               <div class="col-md-6">
-                                <div class="btn btn-default">
-                                  <i class="fa fa-print"></i>
-                                </div>
+                                
                                 <div class="btn btn-default">
                                   <i class="fa fa-file-excel-o"></i>
                                 </div>
-                                <div class="btn btn-default">
-                                  <i class="fa fa-filter"></i>
-                                </div>
+                                
                               </div>
                               <div class="col-md-6">
                                 <div class="row">
@@ -58,7 +54,7 @@
                     										
                                     </thead>
                                     <tbody>
-                                      <?php foreach($gdrcs as $gdrc){?>
+                                      <?php foreach($results as $gdrc){?>
                                         <tr>
                                             <td><?=$gdrc->isbn; ?></td>
                                             <td><?=$gdrc->judul; ?></td>
@@ -81,7 +77,7 @@
                                         <?php }?>
                                     </tbody>
                                 </table>
-
+                              <?php echo $links; ?>
                             </div>
                         </div>
                     </div>

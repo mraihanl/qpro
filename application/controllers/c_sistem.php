@@ -88,12 +88,12 @@ class C_sistem extends CI_Controller
 		redirect('/c_sistem/user_data');
 	}
 
-	function auto_wrhs(){
+	function auto_role(){
         if (isset($_GET['term'])) {
-            $result = $this->m_transaksi->search_wrhs($_GET['term']);
+            $result = $this->m_sistem->search_role($_GET['term']);
             	if (count($result) > 0) {
             		foreach ($result as $row)
-                	$arr_result[] = $row->name;
+                	$arr_result[] = $row->rolename;
                 	echo json_encode($arr_result);
         }}}
 
