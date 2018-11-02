@@ -12,7 +12,8 @@ class C_halaman extends CI_Controller
 	{		
 		$data = array(
 			'buku' => $this->m_halaman->totalbuku(),
-			'transaksi' => $this->m_halaman->totaltransaksi()
+			'customer' => $this->m_halaman->totalcustomer(),
+			'warehouse' => $this->m_halaman->totalwrhs()
 		);
 		
 		$this->load->view('templates/header');

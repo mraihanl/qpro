@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2018 at 05:47 AM
+-- Generation Time: Nov 02, 2018 at 09:16 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -140,7 +140,8 @@ CREATE TABLE `xgi` (
 --
 
 INSERT INTO `xgi` (`isbn`, `judul`, `from`, `to`, `trandate`, `qty`) VALUES
-('30033', 'Tsubasa Ozora 2', 'Bernard Warehouse', 'Sisma Warehouse', '2018-10-28 15:12:00', 5);
+('812645', 'Masterpiece', 'Pusat', 'Sisma Warehouse', '2018-11-02 10:20:00', 3),
+('812645', 'Masterpiece', 'Pusat', 'Bernard Warehouse', '2018-11-02 10:22:00', 5);
 
 -- --------------------------------------------------------
 
@@ -154,16 +155,16 @@ CREATE TABLE `xgr` (
   `from` varchar(100) DEFAULT NULL,
   `to` varchar(100) DEFAULT NULL,
   `trandate` datetime DEFAULT NULL,
-  `qty` int(11) DEFAULT NULL,
-  `confirm` varchar(20) DEFAULT NULL
+  `qty` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `xgr`
 --
 
-INSERT INTO `xgr` (`isbn`, `judul`, `from`, `to`, `trandate`, `qty`, `confirm`) VALUES
-('30033', 'Tsubasa Ozora 2', 'Bernard Warehouse', 'Sisma Warehouse', '2018-10-28 15:12:00', 5, NULL);
+INSERT INTO `xgr` (`isbn`, `judul`, `from`, `to`, `trandate`, `qty`) VALUES
+('812645', 'Masterpiece', 'Ceria Gemilang Sejahtera', 'Pusat', '2018-11-02 10:12:00', 8),
+('812645', 'Masterpiece', 'Ceria Gemilang Sejahtera', 'Pusat', '2018-11-02 10:15:00', 7);
 
 -- --------------------------------------------------------
 
@@ -276,29 +277,29 @@ CREATE TABLE `ybk` (
   `judul` varchar(50) NOT NULL,
   `pengarang` varchar(30) NOT NULL,
   `tahun` int(11) DEFAULT NULL,
+  `edisi` varchar(50) DEFAULT NULL,
   `cat` varchar(30) NOT NULL,
   `sellprice` int(11) NOT NULL,
-  `costprice` int(11) NOT NULL,
-  `qty` int(11) DEFAULT NULL
+  `costprice` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ybk`
 --
 
-INSERT INTO `ybk` (`isbn`, `judul`, `pengarang`, `tahun`, `cat`, `sellprice`, `costprice`, `qty`) VALUES
-('62153213', 'Cahaya Ilahi', 'Raihan', 2012, 'Religi', 30000, 25000, 5),
-('30033', 'Tsubasa Ozora 2', 'Raihan', 2015, 'shounen', 23300, 20000, 4),
-('812645', 'Masterpiece', 'Frans', 2015, 'Magic', 200000, 120000, 0),
-('67876', 'Fairy Tail', 'Hiro Mashima', NULL, 'Fantasi, Fiksi', 25000, 20000, NULL),
-('61253', 'Tauladan', 'Eren', NULL, 'Rohani', 20000, 15000, NULL),
-('6523654', 'Dunia Baru', 'Anji', NULL, 'Rohani', 30000, 17000, NULL),
-('34522', 'Test Book', 'Andika', NULL, 'Test', 25000, 2000, NULL),
-('1234567', '99 Nama Allah', 'Qisthi', NULL, 'Religi', 30000, 3000, NULL),
-('1234523', 'Juice 101', 'Andika', NULL, 'Culinary', 25000, 2000, NULL),
-('111999', 'Test', 'Andika', NULL, 'Anime', 100000, 2300, NULL),
-('90001', 'New Book', 'Raihan', NULL, 'Thriller', 23300, 16500, NULL),
-('2137632', 'Cahaya Matahari', 'Ibnu', NULL, 'Religi', 125000, 100000, NULL);
+INSERT INTO `ybk` (`isbn`, `judul`, `pengarang`, `tahun`, `edisi`, `cat`, `sellprice`, `costprice`) VALUES
+('62153213', 'Cahaya Ilahi', 'Raihan', 2012, 'Cetakan ke-1', 'Religi', 30000, 25000),
+('30033', 'Tsubasa Ozora 2', 'Raihan', 2015, NULL, 'shounen', 23300, 20000),
+('812645', 'Masterpiece', 'Frans', 2015, NULL, 'Magic', 200000, 120000),
+('67876', 'Fairy Tail', 'Hiro Mashima', 2012, NULL, 'Fantasi, Fiksi', 25000, 20000),
+('61253', 'Tauladan', 'Eren', NULL, NULL, 'Rohani', 20000, 15000),
+('6523654', 'Dunia Baru', 'Anji', NULL, NULL, 'Rohani', 30000, 17000),
+('34522', 'Test Book', 'Andika', NULL, NULL, 'Test', 25000, 2000),
+('1234567', '99 Nama Allah', 'Qisthi', NULL, NULL, 'Religi', 30000, 3000),
+('1234523', 'Juice 101', 'Andika', NULL, NULL, 'Culinary', 25000, 2000),
+('111999', 'Test', 'Andika', NULL, NULL, 'Anime', 100000, 2300),
+('90001', 'New Book', 'Raihan', NULL, NULL, 'Thriller', 23300, 16500),
+('2137632', 'Cahaya Matahari', 'Ibnu', NULL, NULL, 'Religi', 125000, 100000);
 
 -- --------------------------------------------------------
 
@@ -372,12 +373,17 @@ INSERT INTO `zbr` (`code`, `name`, `area`, `telp`, `mail`, `contact`, `address`)
 --
 
 CREATE TABLE `zro` (
-  `code` varchar(5) NOT NULL,
-  `brcode` varchar(100) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `grantr` varchar(100) NOT NULL,
-  `grantw` varchar(100) NOT NULL
+  `id` int(11) NOT NULL,
+  `rolename` varchar(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `zro`
+--
+
+INSERT INTO `zro` (`id`, `rolename`) VALUES
+(1, 'Staff'),
+(2, 'Warehouse');
 
 -- --------------------------------------------------------
 
@@ -399,8 +405,9 @@ CREATE TABLE `zus` (
 --
 
 INSERT INTO `zus` (`username`, `password`, `mail`, `name`, `rocode`, `cabang`) VALUES
-('admin', '0192023a7bbd73250516f069df18b500', 'null@gmail.com', 'admin', 'admin', 'Pusat'),
-('mraihanl', '51899e648dfd6cde439410566dea5b2a', 'raihan.firnadi@aplog.co', 'M. Raihan L.', 'Staff', 'Pusat');
+('admin', '0192023a7bbd73250516f069df18b500', 'null@gmail.com', 'Superuser', 'admin', 'Pusat'),
+('mraihanl', '51899e648dfd6cde439410566dea5b2a', 'raihan.firnadi@aplog.co', 'M. Raihan L.', 'Staff', 'Pusat'),
+('andika', '1b7e0e0f2ef72bd844acb756645b4ea3', '', 'Andika P.', 'Warehouse', 'Sisma Warehouse');
 
 --
 -- Indexes for dumped tables
@@ -500,7 +507,7 @@ ALTER TABLE `zbr`
 -- Indexes for table `zro`
 --
 ALTER TABLE `zro`
-  ADD PRIMARY KEY (`code`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `zus`
@@ -546,13 +553,13 @@ ALTER TABLE `si1`
 -- AUTO_INCREMENT for table `xsp`
 --
 ALTER TABLE `xsp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `xst`
 --
 ALTER TABLE `xst`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ycs`
@@ -565,6 +572,12 @@ ALTER TABLE `ycs`
 --
 ALTER TABLE `zbr`
   MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `zro`
+--
+ALTER TABLE `zro`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

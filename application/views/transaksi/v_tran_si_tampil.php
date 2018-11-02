@@ -1,7 +1,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                      <h3>Data Sales Invoice</h3>
+                      <h3>Data Goods Sold</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -33,7 +33,7 @@
                                   <div class="col-md-6">
                                     <div class="btn btn-info btn-fill">
                                       <i class="fa fa-plus"></i>
-                                      <?php echo anchor('c_transaksi/sales_invoice_input', 'Input Sales Invoice', array('class' => 'btn-infoa')); ?>
+                                      <?php echo anchor('c_transaksi/sales_invoice_input', 'Input Goods Sold', array('class' => 'btn-infoa')); ?>
                                     </div>
                                   </div>
                                 </div>

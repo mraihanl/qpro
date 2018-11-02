@@ -60,7 +60,7 @@
             </div>
             <div class="col-md-6">
                 <div class="logoq" style="text-align: center;">
-                    <img src="<?php echo base_url('img/tehbotol.png'); ?>" style=" width: 200px; margin: 20px; border-radius: 10px;transform: translateY(80px);">
+                    <img src="<?php echo base_url('img/fsi.png'); ?>" style=" width: 200px; margin: 20px; border-radius: 10px;transform: translateY(80px);">
                 </div>
                 <div class="col-md-12" style="text-align: center; opacity: 0;">
                     <p>SELAMAT DATANG DI QISTHI PRESS</p>

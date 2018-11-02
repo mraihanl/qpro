@@ -6,17 +6,16 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3 class="title">Sales Invoice</h3>
-                            <p>Tambah Data Sales Invoice</p> 
+                            <h3 class="title">Goods Sold</h3>                             
                         </div>
                         <div class="col-md-6">
                            <div class="btn btn-info pull-right btn-fill">
                             <i class="fa fa-file-o"></i>
-                            <?php echo anchor('c_transaksi/sales_invoice_data', 'Daftar Sales Invoice', array('class' => 'btn-infoa')); ?>
+                            <?php echo anchor('c_transaksi/sales_invoice_data', 'Daftar Goods Sold', array('class' => 'btn-infoa')); ?>
                            </div> 
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" style="margin-top: 10px;">
                         <div class="content">
                             <form>
                                 <div class="row">
