@@ -6,6 +6,7 @@ class C_master extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->database();
+		//$this->db->reconnect();
 		$this->load->model('m_master');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('pagination');

@@ -7,6 +7,7 @@ class C_sistem extends CI_Controller
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->database();
+		//$this->db->reconnect();
 		$this->load->model('m_sistem');
 	}
 

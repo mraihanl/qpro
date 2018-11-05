@@ -8,6 +8,7 @@ class Hello extends CI_Controller
 	
 	//load database libray manually
 	$this->load->database();
+	//$this->db->reconnect();
 	
 	//load Model
 	$this->load->model('Hello_Model');
