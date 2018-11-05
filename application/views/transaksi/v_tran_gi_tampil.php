@@ -17,7 +17,7 @@
                                 </div>
                                                                 
                                   <?php if ($this->session->flashdata('sukses')) { ?>
-                                  <div class="alert alert-success">                                  
+                                  <div id="alert" style="margin-top: 10px;" class="alert alert-success">                                  
                                   <?= $this->session->flashdata('sukses') ?> </div>
                                   <?php } ?>        
                               </div>                              
@@ -32,7 +32,7 @@
                                     </div>
                                   </div>
                                   <div class="col-md-6">
-                                    <div class="btn btn-info btn-fill">
+                                    <div class="btn btn-info btn-fill" style="float: right;">
                                       <i class="fa fa-plus"></i>
                                       <?php echo anchor('c_transaksi/gi_input', 'New Good Issue', array('class' => 'btn-infoa')); ?>
                                     </div>
@@ -93,7 +93,9 @@
                   } else {
                   alert('Hapus data dibatalkan');
                   }
-                }         
+                }
+
+              $("#alert").fadeTo(2000, 500).slideUp(500, function(){$("#alert").slideUp(500);});         
             </script>
           </body>
           

@@ -6,16 +6,16 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3 class="title">Good Issue</h3> 
+                            <h3 class="title">Input Good Issue</h3> 
                         </div>
-                        <div class="col-md-6" style="margin-bottom: 10px;">
+                        <div class="col-md-6" >
                            <div class="btn btn-info pull-right btn-fill">
                             <i class="fa fa-file-o"></i>
                             <?php echo anchor('c_transaksi/gi_data', 'Daftar Good Issue', array('class' => 'btn-infoa')); ?>
                            </div> 
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" style="margin-top: 10px;">
                         <div class="content">
                             <form>
                                 <div class="row">

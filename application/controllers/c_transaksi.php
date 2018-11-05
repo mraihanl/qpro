@@ -300,13 +300,16 @@
 			$data = array(
 				'isbn' => $this->input->post('isbn'),
 				'judul' => $this->input->post('judul'),
+				'from' => $this->input->post('from'),
+				'to' => $this->input->post('to'),
 				'trandate' => $this->input->post('trandate'),
 				'qty' => $this->input->post('qty')
 			);
 
 			//masukkan ke datanya ke model
 			$this->m_transaksi->inputgdrc($data);		
-		
+			$this->session->set_flashdata('sukses',"Data Inserted Successfully");
+			redirect('c_transaksi/gr_data/');
 		}
 		$this->load->view('templates/header');
 		$this->load->view('transaksi/v_tran_gr_input');
@@ -321,15 +324,14 @@
 				$this->load->view('templates/footer');
 	}
 	function gr_edit_update(){
-				$isbn = $this->input->post('isbn');
-				$judul = $this->input->post('judul');
-				$trandate = $this->input->post('trandate');
-				$qty = $this->input->post('qty');
-
+				$isbn = $this->input->post('isbn');				
 				$data = array(
-					'judul' => $judul,
+					'judul' => $this->input->post('judul'),
 					'trandate' => $trandate,
-					'qty' => $qty,
+					'from' => $this->input->post('from'),
+					'to' => $this->input->post('to'),
+					'trandate' => $this->input->post('trandate'),
+					'qty' => $this->input->post('qty')
 				);
 			 
 				$where = array(
@@ -405,6 +407,15 @@
             	if (count($result) > 0) {
             		foreach ($result as $row)
                 	$arr_result[] = $row->name;
+                	echo json_encode($arr_result);
+        }}}
+
+        function auto_supplier(){
+        if (isset($_GET['term'])) {
+            $result = $this->m_transaksi->search_supplier($_GET['term']);
+            	if (count($result) > 0) {
+            		foreach ($result as $row)
+                	$arr_result[] = $row->nama;
                 	echo json_encode($arr_result);
         }}}
 	}//end class

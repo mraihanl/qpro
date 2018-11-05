@@ -182,7 +182,14 @@ class M_transaksi extends CI_Model
             return $data;
         } 
         return false;
-    }    
+    }
+
+    function search_supplier($nama){
+		$this->db->like( 'nama', $nama , 'both');
+		$this->db->order_by('nama', 'ASC');
+		$this->db->limit(10);
+		return $this->db->get('xsp')->result();
+	}    
 
 }
 ?>

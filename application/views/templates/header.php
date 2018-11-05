@@ -112,8 +112,8 @@
                       </a>
                       <div id="collapse3" class="panel-collapse collapse">
                         <ul class="list-group">
-                          <li class="list-group-item"><?php echo anchor('c_transaksi/gi_data', 'Goods Issue'); ?></li>
-                          <li class="list-group-item"><?php echo anchor('c_transaksi/gr_data', 'Goods Receipt'); ?></li>                         
+                          <li class="list-group-item"><?php echo anchor('c_transaksi/gr_data', 'Goods Receipt'); ?></li>
+                          <li class="list-group-item"><?php echo anchor('c_transaksi/gi_data', 'Goods Issue'); ?></li>                                                   
                           <li class="list-group-item"><?php echo anchor('c_transaksi/sales_invoice_data', 'Goods Sold'); ?></li>    
                           <li class="list-group-item"><?php echo anchor('c_halaman/dashboard', 'Goods Return'); ?></li>
                           <li class="list-group-item"><?php echo anchor('c_halaman/dashboard', 'Payment'); ?></li>                           

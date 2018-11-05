@@ -1,4 +1,20 @@
 <body>
+    <script type="text/javascript">
+        var cab ="<?php echo $this->session->userdata("cabang") ?>";
+        if(cab == "Pusat"){
+          $(document).ready(function(){
+            $( "#asal" ).autocomplete({
+              source: "<?php echo site_url('c_transaksi/auto_supplier/?');?>"
+            });
+        });  
+        }else{
+           $(document).ready(function(){
+            $( "#asal" ).autocomplete({
+              source: "<?php echo site_url('c_transaksi/auto_wrhs/?');?>"
+            });
+        });  
+       } 
+    </script>
 <form method="post">
 <div class="content">
             <div class="container-fluid">
@@ -6,8 +22,7 @@
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-6">
-                                <h3 class="title">Master Goods Receipt</h3>
-                                <p>Tambah Data Goods Receipt</p> 
+                                <h3 class="title">Input Goods Receipt</h3>                                 
                             </div>
                             <div class="col-md-6">
                                <div class="btn btn-info pull-right btn-fill">
@@ -16,7 +31,7 @@
                                </div> 
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" style="margin-top: 10px;">
                             <div class="content">
                                 <form>
                                     <div class="row">
@@ -29,6 +44,20 @@
                                                 <label>ISBN</label>
                                                 <input type="text" class="form-control" placeholder="Kode Customer" name="isbn" id="title" readonly>
                                             </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>From</label>
+                                                <input id="asal" type="text" class="form-control" placeholder="Warehouse" name="from">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>to</label>
+                                                <input id="wrhs2" type="text" class="form-control" placeholder="Warehouse" name="to" value="<?php echo $this->session->userdata("cabang"); ?>" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
                                             <div class="form-group">
                                                 <label>TRANSACTION DATE</label>
                                                 <input type="datetime-local" class="form-control" placeholder="BR Code FR" name="trandate">
@@ -60,6 +89,19 @@
             });
         });
 
+        if(<?php echo $this->session->userdata("cabang"); ?>.equals("Pusat")){
+          $(document).ready(function(){
+            $( "#asal" ).autocomplete({
+              source: "<?php echo site_url('c_transaksi/auto_supplier/?');?>"
+            });
+        });  
+        }else{
+           $(document).ready(function(){
+            $( "#asal" ).autocomplete({
+              source: "<?php echo site_url('c_transaksi/auto_wrhs/?');?>"
+            });
+        });  
+       }       
     </script>
 </body>
     
