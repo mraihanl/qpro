@@ -364,7 +364,8 @@
 	            // build paging links
 	            $params["links"] = $this->pagination->create_links();
 	        }else{
-	        	echo '';
+	        	$params="";
+	        	echo $params;
 	        }
 		// $query = $this->m_transaksi->tampilgdrcall();
   // 		$data['gdrcs'] = null;

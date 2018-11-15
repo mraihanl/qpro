@@ -87,21 +87,7 @@
                     $('[name="isbn"]').val(ui.item.description);                     
                 }
             });
-        });
-
-        if(<?php echo $this->session->userdata("cabang"); ?>.equals("Pusat")){
-          $(document).ready(function(){
-            $( "#asal" ).autocomplete({
-              source: "<?php echo site_url('c_transaksi/auto_supplier/?');?>"
-            });
-        });  
-        }else{
-           $(document).ready(function(){
-            $( "#asal" ).autocomplete({
-              source: "<?php echo site_url('c_transaksi/auto_wrhs/?');?>"
-            });
-        });  
-       }       
+        });     
     </script>
 </body>
     
