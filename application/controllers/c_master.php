@@ -9,6 +9,7 @@ class C_master extends CI_Controller
 		$this->load->model('m_master');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('pagination');
+		$this->load->model('m_master');
 	}
 
 	//Modul Buku==============================================================
@@ -101,6 +102,12 @@ class C_master extends CI_Controller
 		$where = array('isbn' => $isbn);
 		$this->m_master->hapusbuku($where,'ybk');
 		redirect('/c_master/master_buku_data');
+	}
+	function search_gdkeyword()
+	{
+		$keyword = $this->input->post('keyword');
+		$data['results'] = $this->m_master->search($keyword);
+		$this->load->view('v_mstr_buku_tampil',$data);
 	}
 
 	//Modul Customer==============================================================

@@ -12,9 +12,9 @@
               <div class="row">
                 <div class="col-md-6">
                   
-                  <div class="btn btn-default">
+                  <!-- <div class="btn btn-default">
                     <i class="fa fa-file-excel-o"></i>
-                  </div>
+                  </div> -->
                    <?php if ($this->session->flashdata('sukses')) { ?>
                    <div id="alert" class="alert alert-success">                   
                    <?= $this->session->flashdata('sukses') ?> </div>
@@ -24,7 +24,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search...">
+                        <input id="srcInput" type="text" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
                           <button class="btn btn-default" type="button"><i class="pe-7s-search"></i></button>
                         </span>
@@ -57,7 +57,7 @@
       										<th>Alamat</th>
                           <th>Action</th>
                       </thead>
-                      <tbody>
+                      <tbody id="srcTable">
                         <?php foreach($wrhss as $wrhs){?>
                           <tr>
                               <td><?=$wrhs->code; ?></td>
@@ -97,5 +97,15 @@
   } 
 
   $("#alert").fadeTo(2000, 500).slideUp(500, function(){$("#alert").slideUp(500);});            
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#srcInput").on("keyup",function() {
+      var value = $(this).val().toLowerCase();
+      $("#srcTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  }); 
 </script>
 </body>

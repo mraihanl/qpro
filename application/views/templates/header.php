@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="../../third_party/assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>QISTHI PRESSSS</title>
+    <title>QISTHI PRESS</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -30,6 +30,7 @@
     <script type='text/javascript' src="<?php echo base_url(); ?>js/light-bootstrap-dashboard.js"></script>
   
   <script src="<?php echo base_url().'assets/js/jquery-ui.js'?>" type="text/javascript"></script>
+
     <!-- <script type='text/javascript' src="<?php //echo base_url(); ?>js/dropzone.js"></script> -->
 
     <!--     Fonts and icons     -->

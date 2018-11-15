@@ -12,9 +12,9 @@
                             <div class="row">
                               <div class="col-md-6">
                                 
-                                <div class="btn btn-default">
+                                <!-- <div class="btn btn-default">
                                   <i class="fa fa-file-excel-o"></i>
-                                </div>
+                                </div> -->
                                 <div style="margin-top: 10px;">
                                 <?php if ($this->session->flashdata('sukses')) { ?>
                                   <div id="alert" class="alert alert-success">                             
