@@ -5,7 +5,6 @@ class C_pagination extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->database();
-		//$this->db->reconnect();
         $this->load->model('m_master');
 	}
 }

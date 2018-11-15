@@ -1,6 +1,11 @@
 <?php
 class M_master extends CI_Model 
 {
+	function __construct()
+    {
+    	parent::__construct();
+    }
+
 	//Modul Buku==============================================================
 	function inputbuku($data)
 	{
@@ -43,6 +48,13 @@ class M_master extends CI_Model
     public function totalbuku() 
     {
         return $this->db->count_all("ybk");
+    }
+
+    function search($keyword)
+    {
+    	$this->db->like('name',$keyword);
+    	$query = $this->db->get('ybk');
+    	return $query->result();
     }
 
 	//Modul Customer==============================================================

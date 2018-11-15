@@ -11,7 +11,7 @@
                           <div class="form-group">
                             <div class="row">
                               <div class="col-md-6">
-                                <div class="btn btn-default">
+                                <!-- <div class="btn btn-default">
                                   <i class="fa fa-print"></i>
                                 </div>
                                 <div class="btn btn-default">
@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="btn btn-default">
                                   <i class="fa fa-filter"></i>
-                                </div>
+                                </div> -->
                               </div>
                               <div class="col-md-6">
                                 <div class="row">
