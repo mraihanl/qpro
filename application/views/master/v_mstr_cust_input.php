@@ -22,8 +22,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>kode</label>
-                                                <input type="text" class="form-control" placeholder="Kode Customer" name="code" readonly="">
+                                                <label>Code</label>
+                                                <input type="text" class="form-control" placeholder="Kode Customer" name="code">
                                             </div>
                                             <div class="form-group">
                                                 <label>BR Code</label>

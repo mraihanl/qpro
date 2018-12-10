@@ -13,7 +13,7 @@
                             <div class="col-md-6">
                                <div class="btn btn-info pull-right btn-fill">
                                 <i class="fa fa-user"></i>
-                                <?php echo anchor('c_master/master_cust_tampil', 'Daftar Customer', array('class' => 'btn-infoa')); ?>
+                                <?php echo anchor('c_master/master_cust_data', 'Daftar Customer', array('class' => 'btn-infoa')); ?>
                                </div> 
                             </div>
                         </div>
@@ -22,9 +22,15 @@
                                 <form>
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <label>ID</label>
+                                                <input type="text" class="form-control" placeholder="ID" name="id" value="<?php echo $cust->id ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>kode</label>
-                                                <input type="text" class="form-control" placeholder="Kode Customer" name="code" value="<?php echo $cust->code ?>" readonly>
+                                                <input type="text" class="form-control" placeholder="Kode Customer" name="code" value="<?php echo $cust->code ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label>BR Code</label>

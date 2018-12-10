@@ -2,7 +2,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                      <h3>Data Goods</h3>
+                      <h3>Master Buku</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -32,7 +32,7 @@
                                   <div class="col-md-6">
                                     <div class="btn btn-info btn-fill" style="float: right;">
                                       <i class="fa fa-plus"></i>
-                                      <?php echo anchor('c_master/master_buku_input', 'Tambah Data Goods', array('class' => 'btn-infoa')); ?>
+                                      <?php echo anchor('c_master/master_buku_input', 'Add Buku', array('class' => 'btn-infoa')); ?>
                                     </div>
                                   </div>
                                 </div>
@@ -49,10 +49,10 @@
                                     <thead>
                                         <th>ISBN</th>
                     										<th>Judul</th>
-                    										<th>Penerbit</th>
+                    										<th>Pengarang</th>
                                         <th>Tahun Terbit</th>
                                         <th>Edisi</th>
-                    										<th>Category</th>                    										
+                    										<th>Kategori</th>                    										
                     										<th>Sell Price</th>
                     										<th>Cost Price</th>
                     										<th>Action</th>

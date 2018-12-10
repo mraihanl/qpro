@@ -9,7 +9,7 @@ class M_master extends CI_Model
 	//Modul Buku==============================================================
 	function inputbuku($data)
 	{
-		$this->db->insert('ybk', $data);
+		$this->db->insert('xbuku', $data);
 	}
 	function hapusbuku($where,$table)
 	{
@@ -27,13 +27,13 @@ class M_master extends CI_Model
 	}	
 	function tampilbukuall()
 	{
-		$query=$this->db->get('ybk');
+		$query=$this->db->get('xbuku');
 		return $query->result();
 	}
 	public function recordbuku($limit, $start) 
     {
         $this->db->limit($limit, $start);
-        $query = $this->db->get("ybk");
+        $query = $this->db->get("xbuku");
  
         if ($query->num_rows() > 0) 
         {
@@ -47,20 +47,20 @@ class M_master extends CI_Model
     }     
     public function totalbuku() 
     {
-        return $this->db->count_all("ybk");
+        return $this->db->count_all("xbuku");
     }
 
     function search($keyword)
     {
     	$this->db->like('name',$keyword);
-    	$query = $this->db->get('ybk');
+    	$query = $this->db->get('xbuku');
     	return $query->result();
     }
 
 	//Modul Customer==============================================================
 	function inputcust($data)
 	{
-		$this->db->insert('ycs', $data);
+		$this->db->insert('xcust', $data);
 	}
 	function hapuscust($where,$table)
 	{
@@ -78,13 +78,13 @@ class M_master extends CI_Model
 	}	
 	function tampilcust()
 	{
-		$query=$this->db->get('ycs');
+		$query=$this->db->get('xcust');
 		return $query->result();
 	}
 	public function recordcust($limit, $start) 
     {
         $this->db->limit($limit, $start);
-        $query = $this->db->get("ycs");
+        $query = $this->db->get("xcust");
  
         if ($query->num_rows() > 0) 
         {
@@ -98,32 +98,46 @@ class M_master extends CI_Model
     }     
     public function totalcust() 
     {
-        return $this->db->count_all("ycs");
+        return $this->db->count_all("xcust");
     }
 
-	//Modul Warehouse==============================================================
-	function inputwrhs($data)
+	//Modul Branch==============================================================
+	function m_branch_input($data)
 	{
-		$this->db->insert('zbr', $data);
+		$this->db->insert('xbranch', $data);
 	}
 
-	function hapuswrhs($where,$table)
+	function m_branch_hapus($where,$table)
 	{
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
-	function editwrhs($where,$table){		
+	function m_branch_edit($where,$table){		
 	return $this->db->get_where($table,$where);
 	}
-	function updatewrhs($where,$data,$table){
+	function m_branch_update($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
 	}	
-	function tampilwrhsall()
-	{
-		$query=$this->db->get('zbr');
-		return $query->result();
-	}
+	public function m_record_branch($limit, $start) 
+    {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get("xbranch");
+ 
+        if ($query->num_rows() > 0) 
+        {
+            foreach ($query->result() as $row) 
+            {
+                $data[] = $row;
+            }             
+            return $data;
+        } 
+        return false;
+    }     
+    public function m_total_branch() 
+    {
+        return $this->db->count_all("xbranch");
+    }
 
 	//Modul Charges========================================================================
 	function inputchgs($data)

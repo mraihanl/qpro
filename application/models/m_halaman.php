@@ -2,13 +2,13 @@
 class M_halaman extends CI_Model{
 
 	function totalbuku(){
-		return $query = $this->db->count_all("ybk"); 
+		return $query = $this->db->count_all("xbuku"); 
 	}
 	function totalcustomer(){
-		return $query = $this->db->count_all("ycs");
+		return $query = $this->db->count_all("xcust");
 	}
 	function totalwrhs(){
-		return $query = $this->db->count_all("zbr");
+		return $query = $this->db->count_all("xbranch");
 	}
 }
 ?>

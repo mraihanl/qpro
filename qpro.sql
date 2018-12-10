@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2018 at 09:16 AM
+-- Generation Time: Dec 10, 2018 at 03:29 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -21,6 +21,16 @@ SET time_zone = "+00:00";
 --
 -- Database: `qpro`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `lap_stockonhand` (IN `isbnget` VARCHAR(13))  BEGIN
+SELECT * FROM xgr WHERE isbn=isbnget;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -103,6 +113,111 @@ CREATE TABLE `si1` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `stockbranch`
+--
+
+CREATE TABLE `stockbranch` (
+  `id` int(11) NOT NULL,
+  `isbn` varchar(15) NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `qty` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view1`
+-- (See below for the actual view)
+--
+CREATE TABLE `view1` (
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_branch_data`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_branch_data` (
+`id` varchar(5)
+,`branch` varchar(100)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xbranch`
+--
+
+CREATE TABLE `xbranch` (
+  `id` varchar(5) NOT NULL,
+  `branch` varchar(100) DEFAULT NULL,
+  `prefix` varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xbranch`
+--
+
+INSERT INTO `xbranch` (`id`, `branch`, `prefix`) VALUES
+('QPHO', 'Qisthi Press Pusat', NULL),
+('QPJB', 'Qisthi Press Jawa Barat', 'XJB'),
+('QPSU', 'Qisthi Press Sumatera Utara', 'XSU');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xbuku`
+--
+
+CREATE TABLE `xbuku` (
+  `isbn` varchar(13) NOT NULL,
+  `judul` varchar(50) NOT NULL,
+  `pengarang` varchar(30) NOT NULL,
+  `tahun` int(11) DEFAULT NULL,
+  `edisi` varchar(50) DEFAULT NULL,
+  `cat` varchar(30) NOT NULL,
+  `sellprice` int(11) NOT NULL,
+  `costprice` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xbuku`
+--
+
+INSERT INTO `xbuku` (`isbn`, `judul`, `pengarang`, `tahun`, `edisi`, `cat`, `sellprice`, `costprice`) VALUES
+('67890', 'Kupinang Engkau dengan Bismillah', 'Ustadz Fulan Lc', 2016, '10', 'Religi', 100000, 90000),
+('12345', 'Pencerah Qolbu', 'Ibn Athaillah', 2015, '1', 'Religi', 125000, 100000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xcust`
+--
+
+CREATE TABLE `xcust` (
+  `id` int(11) NOT NULL,
+  `code` varchar(10) DEFAULT NULL,
+  `brcode` varchar(100) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `npwp` varchar(20) DEFAULT NULL,
+  `telp` varchar(20) DEFAULT NULL,
+  `mail` varchar(20) DEFAULT NULL,
+  `contact` varchar(20) DEFAULT NULL,
+  `address` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xcust`
+--
+
+INSERT INTO `xcust` (`id`, `code`, `brcode`, `name`, `npwp`, `telp`, `mail`, `contact`, `address`) VALUES
+(4, 'TGA', 'QPHO', 'Toko Gunung Agung', '', '', '', '', 'Jl. Kwitang No. 6 Jakarta Pusat, Indonesia'),
+(5, 'TGA', 'QPHO', 'Toko Gunung Agung', '', '', '', '', 'Jl. Kramat Kwitang No. 38, kwitang, senen, Jakarta Pusat 10420');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `xdo`
 --
 
@@ -140,8 +255,8 @@ CREATE TABLE `xgi` (
 --
 
 INSERT INTO `xgi` (`isbn`, `judul`, `from`, `to`, `trandate`, `qty`) VALUES
-('812645', 'Masterpiece', 'Pusat', 'Sisma Warehouse', '2018-11-02 10:20:00', 3),
-('812645', 'Masterpiece', 'Pusat', 'Bernard Warehouse', '2018-11-02 10:22:00', 5);
+('812645', 'Masterpiece', 'QPHO', 'Sisma Warehouse', '2018-11-02 10:20:00', 3),
+('812645', 'Masterpiece', 'QPHO', 'Bernard Warehouse', '2018-11-02 10:22:00', 5);
 
 -- --------------------------------------------------------
 
@@ -164,7 +279,36 @@ CREATE TABLE `xgr` (
 
 INSERT INTO `xgr` (`isbn`, `judul`, `from`, `to`, `trandate`, `qty`) VALUES
 ('812645', 'Masterpiece', 'Ceria Gemilang Sejahtera', 'Pusat', '2018-11-02 10:12:00', 8),
-('812645', 'Masterpiece', 'Ceria Gemilang Sejahtera', 'Pusat', '2018-11-02 10:15:00', 7);
+('812645', 'Masterpiece', 'Ceria Gemilang Sejahtera', 'Pusat', '2018-11-02 10:15:00', 7),
+('30033', 'Tsubasa Ozora 2', 'Ceria Gemilang Sejahtera', 'Pusat', '2018-11-22 10:10:00', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xgs`
+--
+
+CREATE TABLE `xgs` (
+  `isbn` varchar(20) NOT NULL,
+  `judul` varchar(100) DEFAULT NULL,
+  `customer` varchar(40) DEFAULT NULL,
+  `cabang` varchar(100) DEFAULT NULL,
+  `trandate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `top` varchar(25) DEFAULT NULL,
+  `amount` float NOT NULL,
+  `discount` float NOT NULL,
+  `tax` float NOT NULL,
+  `qty` int(11) DEFAULT NULL,
+  `netamount` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xgs`
+--
+
+INSERT INTO `xgs` (`isbn`, `judul`, `customer`, `cabang`, `trandate`, `top`, `amount`, `discount`, `tax`, `qty`, `netamount`) VALUES
+('27637162', NULL, 'Waluyo', NULL, '2018-10-21 17:00:00', 'Cash', 30000, 5, 10, NULL, 31350),
+('123', 'tes', 'Waluyo', 'Pusat', '2018-11-16 08:00:00', 'Cash', 40000, 0, 10, 1, 44000);
 
 -- --------------------------------------------------------
 
@@ -209,30 +353,6 @@ CREATE TABLE `xrt` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `xsi`
---
-
-CREATE TABLE `xsi` (
-  `isbn` varchar(20) NOT NULL,
-  `customer` varchar(40) DEFAULT NULL,
-  `trandate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `top` varchar(25) DEFAULT NULL,
-  `amount` float NOT NULL,
-  `discount` float NOT NULL,
-  `tax` float NOT NULL,
-  `netamount` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `xsi`
---
-
-INSERT INTO `xsi` (`isbn`, `customer`, `trandate`, `top`, `amount`, `discount`, `tax`, `netamount`) VALUES
-('27637162', 'Waluyo', '2018-10-21 17:00:00', 'Cash', 30000, 5, 10, 31350);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `xsp`
 --
 
@@ -269,41 +389,6 @@ INSERT INTO `xst` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ybk`
---
-
-CREATE TABLE `ybk` (
-  `isbn` varchar(13) NOT NULL,
-  `judul` varchar(50) NOT NULL,
-  `pengarang` varchar(30) NOT NULL,
-  `tahun` int(11) DEFAULT NULL,
-  `edisi` varchar(50) DEFAULT NULL,
-  `cat` varchar(30) NOT NULL,
-  `sellprice` int(11) NOT NULL,
-  `costprice` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ybk`
---
-
-INSERT INTO `ybk` (`isbn`, `judul`, `pengarang`, `tahun`, `edisi`, `cat`, `sellprice`, `costprice`) VALUES
-('62153213', 'Cahaya Ilahi', 'Raihan', 2012, 'Cetakan ke-1', 'Religi', 30000, 25000),
-('30033', 'Tsubasa Ozora 2', 'Raihan', 2015, NULL, 'shounen', 23300, 20000),
-('812645', 'Masterpiece', 'Frans', 2015, NULL, 'Magic', 200000, 120000),
-('67876', 'Fairy Tail', 'Hiro Mashima', 2012, NULL, 'Fantasi, Fiksi', 25000, 20000),
-('61253', 'Tauladan', 'Eren', NULL, NULL, 'Rohani', 20000, 15000),
-('6523654', 'Dunia Baru', 'Anji', NULL, NULL, 'Rohani', 30000, 17000),
-('34522', 'Test Book', 'Andika', NULL, NULL, 'Test', 25000, 2000),
-('1234567', '99 Nama Allah', 'Qisthi', NULL, NULL, 'Religi', 30000, 3000),
-('1234523', 'Juice 101', 'Andika', NULL, NULL, 'Culinary', 25000, 2000),
-('111999', 'Test', 'Andika', NULL, NULL, 'Anime', 100000, 2300),
-('90001', 'New Book', 'Raihan', NULL, NULL, 'Thriller', 23300, 16500),
-('2137632', 'Cahaya Matahari', 'Ibnu', NULL, NULL, 'Religi', 125000, 100000);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ych`
 --
 
@@ -315,56 +400,6 @@ CREATE TABLE `ych` (
   `pct` int(11) NOT NULL,
   `amt` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ycs`
---
-
-CREATE TABLE `ycs` (
-  `code` int(11) NOT NULL,
-  `brcode` varchar(100) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `npwp` varchar(20) NOT NULL,
-  `telp` varchar(20) NOT NULL,
-  `mail` varchar(20) NOT NULL,
-  `contact` varchar(20) NOT NULL,
-  `address` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ycs`
---
-
-INSERT INTO `ycs` (`code`, `brcode`, `name`, `npwp`, `telp`, `mail`, `contact`, `address`) VALUES
-(71240, 'BDG', 'Surya Citra PT', '77288812731', '022553432', 'Surya.cs@surya.com', 'Adi', 'Jl. Demangan 3 Utara'),
-(71241, 'JKT', 'Dan\'s Book Collection', '6284639274', '021344535', 'dan.bc@gmail.com', 'Lee Tuk', 'Jl. Amper');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `zbr`
---
-
-CREATE TABLE `zbr` (
-  `code` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `area` varchar(10) NOT NULL,
-  `telp` varchar(20) NOT NULL,
-  `mail` varchar(20) NOT NULL,
-  `contact` varchar(50) NOT NULL,
-  `address` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `zbr`
---
-
-INSERT INTO `zbr` (`code`, `name`, `area`, `telp`, `mail`, `contact`, `address`) VALUES
-(2, 'Sisma Warehouse', 'East', '0216334457', 'Sisma.w@sisma.co.id', 'Maruf', 'Petrus East'),
-(3, 'Bernard Warehouse', 'West', '02161727634', 'Bernard.fto@gmail.co', 'Dinar', 'Jl. Sukamaju Rakyat'),
-(4, 'Pusat', 'Bekasi', '021762732', 'email', 'kontak', 'jl Bekasi');
 
 -- --------------------------------------------------------
 
@@ -405,9 +440,27 @@ CREATE TABLE `zus` (
 --
 
 INSERT INTO `zus` (`username`, `password`, `mail`, `name`, `rocode`, `cabang`) VALUES
-('admin', '0192023a7bbd73250516f069df18b500', 'null@gmail.com', 'Superuser', 'admin', 'Pusat'),
+('admin', '0192023a7bbd73250516f069df18b500', 'null@gmail.com', 'Superuser', 'admin', 'QPHO'),
 ('mraihanl', '51899e648dfd6cde439410566dea5b2a', 'raihan.firnadi@aplog.co', 'M. Raihan L.', 'Staff', 'Pusat'),
 ('andika', '1b7e0e0f2ef72bd844acb756645b4ea3', '', 'Andika P.', 'Warehouse', 'Sisma Warehouse');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view1`
+--
+DROP TABLE IF EXISTS `view1`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view1`  AS  select `ybk`.`isbn` AS `isbn`,`ybk`.`judul` AS `judul`,`ybk`.`pengarang` AS `pengarang`,`ybk`.`tahun` AS `tahun`,`ybk`.`edisi` AS `edisi`,`ybk`.`cat` AS `cat`,`ybk`.`sellprice` AS `sellprice`,`ybk`.`costprice` AS `costprice` from `ybk` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_branch_data`
+--
+DROP TABLE IF EXISTS `v_branch_data`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_branch_data`  AS  select `xbranch`.`id` AS `id`,`xbranch`.`branch` AS `branch` from `xbranch` ;
 
 --
 -- Indexes for dumped tables
@@ -444,6 +497,30 @@ ALTER TABLE `si1`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `stockbranch`
+--
+ALTER TABLE `stockbranch`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `xbranch`
+--
+ALTER TABLE `xbranch`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `xbuku`
+--
+ALTER TABLE `xbuku`
+  ADD PRIMARY KEY (`isbn`);
+
+--
+-- Indexes for table `xcust`
+--
+ALTER TABLE `xcust`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `xdo`
 --
 ALTER TABLE `xdo`
@@ -462,12 +539,6 @@ ALTER TABLE `xrt`
   ADD PRIMARY KEY (`code`);
 
 --
--- Indexes for table `xsi`
---
-ALTER TABLE `xsi`
-  ADD PRIMARY KEY (`isbn`);
-
---
 -- Indexes for table `xsp`
 --
 ALTER TABLE `xsp`
@@ -480,27 +551,9 @@ ALTER TABLE `xst`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ybk`
---
-ALTER TABLE `ybk`
-  ADD PRIMARY KEY (`isbn`);
-
---
 -- Indexes for table `ych`
 --
 ALTER TABLE `ych`
-  ADD PRIMARY KEY (`code`);
-
---
--- Indexes for table `ycs`
---
-ALTER TABLE `ycs`
-  ADD PRIMARY KEY (`code`);
-
---
--- Indexes for table `zbr`
---
-ALTER TABLE `zbr`
   ADD PRIMARY KEY (`code`);
 
 --
@@ -550,6 +603,18 @@ ALTER TABLE `si1`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `stockbranch`
+--
+ALTER TABLE `stockbranch`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `xcust`
+--
+ALTER TABLE `xcust`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `xsp`
 --
 ALTER TABLE `xsp`
@@ -560,18 +625,6 @@ ALTER TABLE `xsp`
 --
 ALTER TABLE `xst`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `ycs`
---
-ALTER TABLE `ycs`
-  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71242;
-
---
--- AUTO_INCREMENT for table `zbr`
---
-ALTER TABLE `zbr`
-  MODIFY `code` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `zro`

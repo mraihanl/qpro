@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration date="2018/11/29" author="e.World Technology Ltd.">
+  <project id="{3496E4EE-933D-475F-875E-A04336B7E1FF}" file="" name="project1" product="PHPReportMaker" version="11.0" datetime="2018/11/29 16:53:43" languagefolder="phprptlang" userlevel="-2,&quot;Anonymous&quot;,0;">
+    <table id="admin" name="admin" caption="admin" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="do1" name="do1" caption="do 1" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="gr1" name="gr1" caption="gr 1" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="rt1" name="rt1" caption="rt 1" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="si1" name="si1" caption="si 1" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xdo" name="xdo" caption="xdo" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xgi" name="xgi" caption="xgi" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xgr" name="xgr" caption="xgr" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xgs" name="xgs" caption="xgs" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xip" name="xip" caption="xip" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xrt" name="xrt" caption="xrt" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xsp" name="xsp" caption="xsp" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xst" name="xst" caption="xst" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="ybk" name="ybk" caption="ybk" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="ych" name="ych" caption="ych" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="ycs" name="ycs" caption="ycs" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="zbr" name="zbr" caption="zbr" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="zro" name="zro" caption="zro" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="zus" name="zus" caption="zus" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="view1" name="view1" caption="view 1" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+  </project>
+</configuration>

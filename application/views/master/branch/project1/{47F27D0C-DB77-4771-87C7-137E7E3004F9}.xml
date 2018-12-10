@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration date="2018/12/02" author="e.World Technology Ltd.">
+  <project id="{47F27D0C-DB77-4771-87C7-137E7E3004F9}" file="" name="project1" product="PHPReportMaker" version="11.0" datetime="2018/12/02 22:03:47" languagefolder="phprptlang" userlevel="-2,&quot;Anonymous&quot;,0;">
+    <table id="admin" name="admin" caption="admin" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="do1" name="do1" caption="do 1" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="gr1" name="gr1" caption="gr 1" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="rt1" name="rt1" caption="rt 1" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="si1" name="si1" caption="si 1" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xbranch" name="xbranch" caption="xbranch" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xbuku" name="xbuku" caption="xbuku" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xdo" name="xdo" caption="xdo" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xgi" name="xgi" caption="xgi" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xgr" name="xgr" caption="xgr" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xgs" name="xgs" caption="xgs" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xip" name="xip" caption="xip" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xrt" name="xrt" caption="xrt" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xsp" name="xsp" caption="xsp" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="xst" name="xst" caption="xst" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="ych" name="ych" caption="ych" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="ycs" name="ycs" caption="ycs" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="zro" name="zro" caption="zro" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="zus" name="zus" caption="zus" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="v_branch_data" name="v_branch_data" caption="v branch data" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+  </project>
+</configuration>

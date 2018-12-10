@@ -37,12 +37,12 @@ class C_master extends CI_Controller
 				//menyiapkan tampilan pesan sukses
 				$this->session->set_flashdata('sukses',"Data Inserted Successfully");
 				//mengarahkan ke daftar buku(hasil flash data di tampilkan di view)
-				redirect('c_master/master_buku_data/');			
+				redirect('C_master/master_buku_data/');			
 		}			
 	}
 	function buku_edit($isbn){
 				$where = array('isbn' => $isbn);
-				$data['bukus'] = $this->m_master->editbuku($where,'ybk')->result();
+				$data['bukus'] = $this->m_master->editbuku($where,'xbuku')->result();
 				$this->load->view('templates/header');
 				$this->load->view('master/v_mstr_buku_edit',$data);
 				$this->load->view('templates/footer');
@@ -64,9 +64,9 @@ class C_master extends CI_Controller
 					'isbn' => $isbn
 				);			 	
 			 				 	
-				$this->m_master->updatebuku($where,$data,'ybk');
+				$this->m_master->updatebuku($where,$data,'xbuku');
 				$this->session->set_flashdata('sukses',"Data Inserted Successfully");				
-				redirect('/c_master/master_buku_data');
+				redirect('/C_master/master_buku_data');
 	}
 	
 	function master_buku_data()
@@ -81,7 +81,7 @@ class C_master extends CI_Controller
             // get current page records
             $params["results"] = $this->m_master->recordbuku($limit_per_page, $start_index);
              
-            $config['base_url'] = base_url() . 'c_master/master_buku_data';
+            $config['base_url'] = base_url() . 'C_master/master_buku_data';
             $config['total_rows'] = $total_records;
             $config['per_page'] = $limit_per_page;
             $config["uri_segment"] = 3;            
@@ -100,8 +100,8 @@ class C_master extends CI_Controller
 	function master_buku_hapus($isbn)
 	{
 		$where = array('isbn' => $isbn);
-		$this->m_master->hapusbuku($where,'ybk');
-		redirect('/c_master/master_buku_data');
+		$this->m_master->hapusbuku($where,'xbuku');
+		redirect('/C_master/master_buku_data');
 	}
 	function search_gdkeyword()
 	{
@@ -115,8 +115,7 @@ class C_master extends CI_Controller
 	{
 		if($this->input->post('name'))
 		{
-			//ambil data dari ketikkan
-			//$code=$this->input->post('code');
+			$code=$this->input->post('code');
 			$brcode=$this->input->post('brcode');
 			$name=$this->input->post('name');
 			$npwp=$this->input->post('npwp');
@@ -125,9 +124,8 @@ class C_master extends CI_Controller
 			$contact=$this->input->post('contact');
 			$address=$this->input->post('address');
 
-			//data di array-kan
 			$data = array(
-				//'code' => $code,
+				'code' => $code,
 				'brcode' => $brcode,
 				'name' => $name,
 				'npwp' => $npwp,
@@ -136,9 +134,9 @@ class C_master extends CI_Controller
 				'contact' => $contact,
 				'address' => $address,
 			);
-
-			//masukkan ke datanya ke model
-			$this->m_master->inputcust($data);		
+			$this->m_master->inputcust($data);
+			$this->session->set_flashdata('sukses',"Data Inserted Successfully");				
+			redirect('C_master/master_cust_data/');		
 		
 		}
 
@@ -147,39 +145,41 @@ class C_master extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 	function cust_edit($code){
-				$where = array('code' => $code);
-				$data['custs'] = $this->m_master->editcust($where,'ycs')->result();
-				$this->load->view('templates/header');
-				$this->load->view('master/v_mstr_cust_edit',$data);
-				$this->load->view('templates/footer');
+		$where = array('code' => $code);
+		$data['custs'] = $this->m_master->editcust($where,'xcust')->result();
+		$this->load->view('templates/header');
+		$this->load->view('master/v_mstr_cust_edit',$data);
+		$this->load->view('templates/footer');
 	}
 	function master_cust_edit(){
-				$code = $this->input->post('code');
-				$brcode = $this->input->post('brcode');
-				$name = $this->input->post('name');
-				$npwp = $this->input->post('npwp');
-				$telp = $this->input->post('telp');
-				$mail = $this->input->post('mail');
-			 	$contact = $this->input->post('contact');
-			 	$address = $this->input->post('address');
+		$id = $this->input->post('id');
+		$code = $this->input->post('code');
+		$brcode = $this->input->post('brcode');
+		$name = $this->input->post('name');
+		$npwp = $this->input->post('npwp');
+		$telp = $this->input->post('telp');
+		$mail = $this->input->post('mail');
+	 	$contact = $this->input->post('contact');
+	 	$address = $this->input->post('address');
 
-				$data = array(
-					'brcode' => $brcode,
-					'name' => $name,
-					'npwp' => $npwp,
-					'telp' => $telp,
-					'mail' => $mail,
-					'contact' => $contact,
-					'address' => $address,
-				);
+		$data = array(
+			'code' => $code,
+			'brcode' => $brcode,
+			'name' => $name,
+			'npwp' => $npwp,
+			'telp' => $telp,
+			'mail' => $mail,
+			'contact' => $contact,
+			'address' => $address,
+		);
 			 
-				$where = array(
-					'code' => $code
-				);
-			 
-				$this->m_master->updatecust($where,$data,'ycs');
-				$this->session->set_flashdata('sukses',"Data Inserted Successfully");
-				redirect('/c_master/master_cust_data');
+		$where = array(
+			'id' => $id
+		);
+	 
+		$this->m_master->updatecust($where,$data,'xcust');
+		$this->session->set_flashdata('sukses',"Data Inserted Successfully");
+		redirect('/C_master/master_cust_data');
 	}
 	public function master_cust_data()
 	{
@@ -193,7 +193,7 @@ class C_master extends CI_Controller
             // get current page records
             $params["results"] = $this->m_master->recordcust($limit_per_page, $start_index);
              
-            $config['base_url'] = base_url() . 'c_master/master_buku_data';
+            $config['base_url'] = base_url() . 'C_master/master_buku_data';
             $config['total_rows'] = $total_records;
             $config['per_page'] = $limit_per_page;
             $config["uri_segment"] = 3;            
@@ -211,100 +211,87 @@ class C_master extends CI_Controller
 	function master_cust_hapus($code)
 	{
 		$where = array('code' => $code);
-		$this->m_master->hapuscust($where,'ycs');
-		redirect('/c_master/master_cust_data');
+		$this->m_master->hapuscust($where,'xcus');
+		redirect('/C_master/master_cust_data');
 	}
 
-	//Modul Warehouse==============================================================
-	public function master_wrhs_input()
+	//Modul Branch==============================================================
+	public function c_branch_input()
 	{
-		if($this->input->post('name'))
+		if($this->input->post('id'))
 		{
-			//ambil data dari ketikkan
-			//$code=$this->input->post('code');
-			$name=$this->input->post('name');
-			$area=$this->input->post('area');
-			$telp=$this->input->post('telp');
-			$mail=$this->input->post('mail');
-			$contact=$this->input->post('contact');
-			$address=$this->input->post('address');
-
-			//data di array-kan
 			$data = array(
 				//'code' => $code,
-				'name' => $name,
-				'area' => $area,
-				'telp' => $telp,
-				'mail' => $mail,
-				'contact' => $contact,
-				'address' => $address
+				'id' => $this->input->post('id'),
+				'branch' => $this->input->post('branch'),
+				'prefix' => $this->input->post('prefix')
 			);
 
-			//masukkan ke datanya ke model
-			$this->m_master->inputwrhs($data);		
+			$this->m_master->m_branch_input($data);		
 			$this->session->set_flashdata('sukses',"Data Inserted Successfully");
-			redirect('/c_master/master_wrhs_data');
+			redirect('/c_master/c_branch_data');
 		}
 		$this->load->view('templates/header');
-		$this->load->view('master/v_mstr_wrhs_input');
+		$this->load->view('master/v_branch_input');
 		$this->load->view('templates/footer');
 	}
-	function wrhs_edit($code){
-				$where = array('code' => $code);
-				$data['wrhss'] = $this->m_master->editbuku($where,'zbr')->result();
+	function c_branch_edit($id){
+				$where = array('id' => $id);
+				$data['branch'] = $this->m_master->m_branch_edit($where,'xbranch')->result();
 				$this->load->view('templates/header');
-				$this->load->view('master/v_mstr_wrhs_edit',$data);
+				$this->load->view('master/v_branch_edit',$data);
 				$this->load->view('templates/footer');
 	}
 
-	function master_wrhs_edit(){
-				$code = $this->input->post('code');
-				$name = $this->input->post('name');
-				$area = $this->input->post('area');
-				$telp = $this->input->post('telp');
-				$mail = $this->input->post('mail');
-				$contact = $this->input->post('contact');
-			 	$address = $this->input->post('address');
-
+	function c_branch_update(){
+				$id = $this->input->post('id');
 				$data = array(
-					'name' => $name,
-					'area' => $area,
-					'telp' => $telp,
-					'mail' => $mail,
-					'contact' => $contact,
-					'address' => $address
+					//'id' => $this->input->post('id'),
+					'branch' => $this->input->post('branch'),
+					'prefix' => $this->input->post('prefix')
 				);
 			 
 				$where = array(
-					'code' => $code
+					'id' => $id
 				);
 			 
-				$this->m_master->updatewrhs($where,$data,'zbr');
+				$this->m_master->m_branch_update($where,$data,'xbranch');
 				$this->session->set_flashdata('sukses',"Data Inserted Successfully");
-				redirect('/c_master/master_wrhs_data');
+				redirect('/C_master/c_branch_data');
 	}
-	function master_wrhs_data()
+	function c_branch_data()
 	{
-		$query = $this->m_master->tampilwrhsall();
-  		$data['wrhss'] = null;
-  		if($query<1)
-  		{
-  			echo '';
-  		}
-  		else
-  		{
-   		   $data['wrhss'] =  $query;
-  		}
+		$params = array();
+        $limit_per_page = 5;
+        $start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $total_records = $this->m_master->m_total_branch();
+
+         if ($total_records > 0) 
+        {
+            // get current page records
+            $params["results"] = $this->m_master->m_record_branch($limit_per_page, $start_index);
+             
+            $config['base_url'] = base_url() . 'C_master/c_branch_data';
+            $config['total_rows'] = $total_records;
+            $config['per_page'] = $limit_per_page;
+            $config["uri_segment"] = 3;            
+            $config['full_tag_open'] = '<div class="pagination"><ul>';
+
+            $this->pagination->initialize($config);
+             
+            // build paging links
+            $params["links"] = $this->pagination->create_links();
+        }
 
 		$this->load->view('templates/header');
-		$this->load->view('master/v_mstr_wrhs_tampil', $data);
+		$this->load->view('master/v_branch_data', $params);
 		$this->load->view('templates/footer');
 	}
-	function master_wrhs_hapus($code)
+	function c_branch_hapus($code)
 	{
 		$where = array('code' => $code);
-		$this->m_master->hapuswrhs($where,'zbr');
-		redirect('/c_master/master_wrhs_data');
+		$this->m_master->hapuswrhs($where,'xbranch');
+		redirect('/C_master/c_branch_data');
 	}
 	
 
@@ -369,7 +356,7 @@ class C_master extends CI_Controller
 				);
 			 
 				$this->m_master->updatechgs($where,$data,'ych');
-				redirect('/c_master/master_chgs_data');
+				redirect('/C_master/master_chgs_data');
 	}
 	public function master_chgs_data()
 	{
@@ -392,7 +379,7 @@ class C_master extends CI_Controller
 	{
 		$where = array('code' => $code);
 		$this->m_master->hapuschgs($where,'ych');
-		redirect('/c_master/master_chgs_data');
+		redirect('/C_master/master_chgs_data');
 	}
 
 	//Modul Goods Receipt==============================================================
@@ -446,7 +433,7 @@ class C_master extends CI_Controller
 				);
 			 
 				$this->m_master->updategdrc($where,$data,'xgr');
-				redirect('/c_master/master_gdrc_tampil');
+				redirect('/C_master/master_gdrc_tampil');
 	}
 	public function master_gdrc_tampil()
 	{
@@ -469,7 +456,7 @@ class C_master extends CI_Controller
 	{
 		$where = array('code' => $code);
 		$this->m_master->hapusgdrc($where,'xgr');
-		redirect('/c_master/master_gdrc_tampil');
+		redirect('/C_master/master_gdrc_tampil');
 	}
 
 	//Master Supplier=================================================================================
@@ -489,7 +476,7 @@ class C_master extends CI_Controller
 				//menyiapkan tampilan pesan sukses
 				$this->session->set_flashdata('sukses',"Data Inserted Successfully");
 				//mengarahkan ke daftar buku(hasil flash data di tampilkan di view)
-				redirect('c_master/master_sp_data/');			
+				redirect('C_master/master_sp_data/');			
 		}			
 	}
 	function master_sp_edit($id){
@@ -511,7 +498,7 @@ class C_master extends CI_Controller
 			 				 	
 				$this->m_master->updatesp($where,$data,'xst');
 				$this->session->set_flashdata('sukses',"Data Inserted Successfully");				
-				redirect('/c_master/master_sp_data');
+				redirect('/C_master/master_sp_data');
 	}
 	
 	function master_sp_data()
@@ -526,7 +513,7 @@ class C_master extends CI_Controller
             // get current page records
             $params["results"] = $this->m_master->recordsp($limit_per_page, $start_index);
              
-            $config['base_url'] = base_url() . 'c_master/master_sp_data';
+            $config['base_url'] = base_url() . 'C_master/master_sp_data';
             $config['total_rows'] = $total_records;
             $config['per_page'] = $limit_per_page;
             $config["uri_segment"] = 3;            
@@ -546,7 +533,7 @@ class C_master extends CI_Controller
 	{
 		$where = array('id' => $id);
 		$this->m_master->hapussp($where,'xsp');
-		redirect('/c_master/master_sp_data');
+		redirect('/C_master/master_sp_data');
 	}
 
 	//Master Store====================================================================================
@@ -567,7 +554,7 @@ class C_master extends CI_Controller
 				//menyiapkan tampilan pesan sukses
 				$this->session->set_flashdata('sukses',"Data Inserted Successfully");
 				//mengarahkan ke daftar buku(hasil flash data di tampilkan di view)
-				redirect('c_master/master_store_data/');			
+				redirect('C_master/master_store_data/');			
 		}			
 	}
 	function master_store_edit($id){
@@ -589,7 +576,7 @@ class C_master extends CI_Controller
 			 				 	
 				$this->m_master->updatestore($where,$data,'xst');
 				$this->session->set_flashdata('sukses',"Data Inserted Successfully");				
-				redirect('/c_master/master_store_data');
+				redirect('/C_master/master_store_data');
 	}
 	
 	function master_store_data()
@@ -604,7 +591,7 @@ class C_master extends CI_Controller
             // get current page records
             $params["results"] = $this->m_master->recordstore($limit_per_page, $start_index);
              
-            $config['base_url'] = base_url() . 'c_master/master_store_data';
+            $config['base_url'] = base_url() . 'C_master/master_store_data';
             $config['total_rows'] = $total_records;
             $config['per_page'] = $limit_per_page;
             $config["uri_segment"] = 3;            
@@ -624,6 +611,6 @@ class C_master extends CI_Controller
 	{
 		$where = array('id' => $id);
 		$this->m_master->hapusstore($where,'xst');
-		redirect('/c_master/master_store_data');
+		redirect('/C_master/master_store_data');
 	}
 }

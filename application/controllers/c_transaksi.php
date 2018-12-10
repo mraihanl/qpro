@@ -12,44 +12,50 @@
 			$this->load->library('pagination');
 		}
 
-		//Modul Sales Invoice==============================================================
-		public function sales_invoice_input()
+		//Modul Good Sold==============================================================
+		public function gs_input()
 		{
 			if($this->input->post('isbn'))
 			{
 				//data di array-kan
 				$data = array(
-					'isbn' => $this->input->post('isbn'),					
+					'isbn' => $this->input->post('isbn'),
+					'judul' => $this->input->post('judul'),					
 					'customer' => $this->input->post('customer'),
+					'cabang' => $this->session->userdata("cabang"),
 					'trandate' => $this->input->post('trandate'),
 					'top' => $this->input->post('top'),				
 					'amount' => $this->input->post('amount'),
 					'discount' => $this->input->post('discount'),
 					'tax' => $this->input->post('tax'),
+					'qty' => $this->input->post('qty'),
 					'netamount' => $this->input->post('netamount')
 				);
 
 				//masukkan ke datanya ke model
-				$this->m_transaksi->input_si($data);
+				$this->m_transaksi->input_gs($data);
+				$this->session->set_flashdata('sukses',"Data Inserted Successfully");
+				redirect('C_transaksi/gs_data/');
 			}
 
 		$this->load->view('templates/header');
-		$this->load->view('transaksi/v_tran_si_input', array('error' => ' ' ));
+		$this->load->view('transaksi/v_tran_gs_input', array('error' => ' ' ));
 		$this->load->view('templates/footer');
 		}
-		function sales_invoice_edit($code){
+		function gs_edit($code){
 					$where = array('code' => $code);
-					$data['sis'] = $this->m_transaksi->edit_si($where,'xsi')->result();
+					$data['sis'] = $this->m_transaksi->edit_gs($where,'xgs')->result();
 					$this->load->view('templates/header');
-					$this->load->view('transaksi/v_tran_si_edit', $data);
+					$this->load->view('transaksi/v_tran_gs_edit', $data);
 					$this->load->view('templates/footer');
 		}
-		function data_sales_invoice_edit(){
+		function gs_update(){
 					//ambil data dari ketikkan
 					$code=$this->input->post('code');					
 					$data = array(
 					'isbn' => $this->input->post('isbn'),					
 					'customer' => $this->input->post('customer'),
+					'cabang' => $this->session->userdata("cabang"),
 					'trandate' => $this->input->post('trandate'),
 					'top' => $this->input->post('top'),				
 					'amount' => $this->input->post('amount'),
@@ -62,31 +68,44 @@
 						'code' => $code
 					);
 				 
-					$this->m_transaksi->update_si($where,$data,'xsi');
-					redirect('/c_transaksi/sales_invoice_data');
+					$this->m_transaksi->update_gs($where,$data,'xgs');
+					redirect('/c_transaksi/gs_data');
 			}
-			public function sales_invoice_data()
+			public function gs_data()
 			{
-				$query = $this->m_transaksi->tampil_si();
-	  			$data['sis'] = null;
-	  			if($query<1)
-		  		{
-		  			echo '';
-		  		}
-		  		else
-	  			{
-	   			$data['sis'] =  $query;
-	  			}
+				$params = array();
+	        	$limit_per_page = 5;
+	        	$start_index = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+	        	$total_records = $this->m_transaksi->totalgs();
+
+	         	if ($total_records > 0) 
+	        	{
+	            // get current page records
+	            $params["results"] = $this->m_transaksi->recordgs($limit_per_page, $start_index);
+	             
+	            $config['base_url'] = base_url() . 'c_transaksi/gs_data';
+	            $config['total_rows'] = $total_records;
+	            $config['per_page'] = $limit_per_page;
+	            $config["uri_segment"] = 3;            
+	            $config['full_tag_open'] = '<div class="pagination"><ul>';
+
+	            $this->pagination->initialize($config);
+	             
+	            // build paging links
+	            $params["links"] = $this->pagination->create_links();
+		        }else{
+		        	echo '';
+		        }
 
 				$this->load->view('templates/header');
-				$this->load->view('transaksi/v_tran_si_tampil', $data);
+				$this->load->view('transaksi/v_tran_gs_tampil', $params);
 				$this->load->view('templates/footer');
 			}
-			function sales_invoice_hapus($code)
+			function gs_hapus($code)
 			{
 				$where = array('code' => $code);
-				$this->m_transaksi->hapus_si($where,'xsi');
-				redirect('/c_transaksi/sales_invoice_data');
+				$this->m_transaksi->hapus_gs($where,'xgs');
+				redirect('/c_transaksi/gs_data');
 			}
 
 

@@ -49,19 +49,21 @@
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
-                                        <th>Code</th>
-                    										<th>BR Code</th>
-                    										<th>Nama</th>
-                    										<th>NPWP</th>
-                    										<th>Telepon</th>
-                    										<th>Email</th>
-                    										<th>Kontak</th>
-                    										<th>Alamat</th>
-                    										<th>Action</th>
+                                      <th>ID</th>
+                                      <th>Code</th>
+                  										<th>BR Code</th>
+                  										<th>Nama</th>
+                  										<th>NPWP</th>
+                  										<th>Telepon</th>
+                  										<th>Email</th>
+                  										<th>Kontak</th>
+                  										<th>Alamat</th>
+                  										<th>Action</th>
                                     </thead>
                                     <tbody id="srcTable">
                                       <?php foreach($results as $cust){?>
                                         <tr>
+                                            <td><?=$cust->id; ?></td>
                                             <td><?=$cust->code; ?></td>
                                             <td><?=$cust->brcode; ?></td>
                                             <td><?=$cust->name; ?></td>

@@ -1,28 +1,49 @@
 <?php
 class M_transaksi extends CI_Model
 {
-	//Modul Sales Invoice==============================================================
-	function input_si($data)
+	//Modul Good Sold==============================================================
+	function input_gs($data)
 	{
-		$this->db->insert('xsi', $data);
+		$this->db->insert('xgs', $data);
 	}
-	function hapus_si($where,$table)
+	function hapus_gs($where,$table)
 	{
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
-	function edit_si($where,$table){		
+	function edit_gs($where,$table){		
 	return $this->db->get_where($table,$where);
 	}
-	function update_si($where,$data,$table){
+	function update_gs($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
 	}
-	function tampil_si()
+	function tampil_gs()
 	{
-		$query=$this->db->get('xsi');
+		$query=$this->db->get('xgs');
 		return $query->result();
 	}
+	public function totalgs() 
+    {
+        return $this->db->count_all("xgs");
+    }
+
+    public function recordgs($limit, $start) 
+    {
+        $this->db->limit($limit, $start);
+        $sess=$this->session->userdata("cabang");
+		$query=$this->db->get_where('xgs',array('cabang'=>$sess));
+ 
+        if ($query->num_rows() > 0) 
+        {
+            foreach ($query->result() as $row) 
+            {
+                $data[] = $row;
+            }             
+            return $data;
+        } 
+        return false;
+    }
 
 	//Modul Incoming Payment============================================================
 	function input_ip($data)

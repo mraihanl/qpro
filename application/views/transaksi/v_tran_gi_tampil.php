@@ -10,14 +10,12 @@
                         <div class="content">
                           <div class="form-group">
                             <div class="row">
-                              <div class="col-md-6">
-                                
+                              <div class="col-md-6">                                
                                 <!-- <div class="btn btn-default">
                                   <i class="fa fa-file-excel-o"></i>
-                                </div> -->
-                                                                
+                                </div> -->                                                                
                                   <?php if ($this->session->flashdata('sukses')) { ?>
-                                  <div id="alert" style="margin-top: 10px;" class="alert alert-success">                                  
+                                  <div id="alert" style="margin-top: 10px;" class="alert alert-success">
                                   <?= $this->session->flashdata('sukses') ?> </div>
                                   <?php } ?>        
                               </div>                              

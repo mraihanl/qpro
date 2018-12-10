@@ -1071,7 +1071,7 @@ fieldset[disabled] .btn-neutral.active {
 
 .form-control {
     background-color: #FFFFFF;
-    border: 1px solid #E3E3E3;
+    border: 1px solid #BDBDBD;
     border-radius: 4px;
     color: #565656;
     padding: 8px 12px;

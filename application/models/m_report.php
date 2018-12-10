@@ -2,7 +2,7 @@
 class M_report extends CI_Model
 {
 	public function stock(){
-		$get = $this->db->query('select qty from xgr where')
+		return $query = $this->db->query("CALL lap_stockonhand(30033)");
 	}
 }
 ?>

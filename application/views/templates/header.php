@@ -43,7 +43,7 @@
       <div class="sidebar-wrapper">
         <div class="logo">
           <a href="#" class="simple-text">
-            <img src="<?php echo base_url('img/aplog.png'); ?>" style="background-color: white; width: 100px;border-radius: 5px;">
+            <img src="<?php echo base_url('img/qisthi-logo.png'); ?>" style="background-color: white; width: 100px;border-radius: 5px;">
           </a>
         </div>
         <ul class="nav">
@@ -86,11 +86,10 @@
               </a>
               <div id="collapse2" class="panel-collapse collapse">
                 <ul class="list-group">
-                  <li class="list-group-item"><?php echo anchor('c_master/master_buku_data', 'Goods'); ?></li>
-                  <li class="list-group-item"><?php echo anchor('c_master/master_cust_data', 'Customer'); ?></li>
-                  <li class="list-group-item"><?php echo anchor('c_master/master_wrhs_data', 'Warehouse'); ?></li>    
-                  <li class="list-group-item"><?php echo anchor('c_master/master_sp_data', 'Supplier'); ?></li>
-                  <li class="list-group-item"><?php echo anchor('c_master/master_store_data', 'Store'); ?></li>                      
+                  <li class="list-group-item"><?php echo anchor('C_master/master_buku_data', 'Buku'); ?></li>
+                  <li class="list-group-item"><?php echo anchor('C_master/c_branch_data', 'Branch'); ?></li> 
+                  <li class="list-group-item"><?php echo anchor('C_master/master_cust_data', 'Customer'); ?></li>                     
+                  <li class="list-group-item"><?php echo anchor('C_master/master_sp_data', 'Percetakan'); ?></li>                                        
                 </ul>
               </div>
             </div>
@@ -107,10 +106,10 @@
               </a>
               <div id="collapse3" class="panel-collapse collapse">
                 <ul class="list-group">
-                  <li class="list-group-item"><?php echo anchor('c_transaksi/gr_data', 'Goods Receipt'); ?></li>
-                  <li class="list-group-item"><?php echo anchor('c_transaksi/gi_data', 'Goods Issue'); ?></li>                                                   
-                  <li class="list-group-item"><?php echo anchor('c_transaksi/sales_invoice_data', 'Goods Sold'); ?></li>    
-                  <li class="list-group-item"><?php echo anchor('c_halaman/dashboard', 'Goods Return'); ?></li>
+                  <li class="list-group-item"><?php echo anchor('C_transaksi/gr_data', 'Goods Receipt'); ?></li>
+                  <li class="list-group-item"><?php echo anchor('C_transaksi/gi_data', 'Goods Issue'); ?></li>                                                   
+                  <li class="list-group-item"><?php echo anchor('C_transaksi/gs_data', 'Goods Sold'); ?></li>    
+                  <li class="list-group-item"><?php echo anchor('C_halaman/dashboard', 'Goods Return'); ?></li>
                   <li id="payment" class="list-group-item"><?php echo anchor('c_halaman/dashboard', 'Payment'); ?></li>                           
                 </ul>
               </div>
@@ -128,12 +127,12 @@
               </a>
               <div id="collapse4" class="panel-collapse collapse">
                 <ul class="list-group">                        
-                  <li class="list-group-item"><?php echo anchor('c_halaman/dashboard', 'Stock on Hand'); ?></li>
-                  <li class="list-group-item"><?php echo anchor('c_halaman/dashboard', 'Stock Mutation'); ?></li>              
-                  <li class="list-group-item"><?php echo anchor('c_halaman/dashboard', 'Sales Report'); ?></li>
-                  <li class="list-group-item"><?php echo anchor('c_halaman/dashboard', 'Incoming Payment'); ?></li>
-                  <li class="list-group-item"><?php echo anchor('c_halaman/dashboard', 'AR Aging'); ?></li>
-                  <li class="list-group-item"><?php echo anchor('c_halaman/dashboard', 'Best Seller'); ?></li>                        
+                  <li class="list-group-item"><?php echo anchor('C_report/soh', 'Stock on Hand', array('target' => '_blank')); ?></li>
+                  <li class="list-group-item"><?php echo anchor('C_halaman/dashboard', 'Stock Mutation', array('target' => '_blank')); ?></li>              
+                  <li class="list-group-item"><?php echo anchor('C_halaman/dashboard', 'Sales Report', array('target' => '_blank')); ?></li>
+                  <li class="list-group-item"><?php echo anchor('C_halaman/dashboard', 'Incoming Payment', array('target' => '_blank')); ?></li>
+                  <li class="list-group-item"><?php echo anchor('C_halaman/dashboard', 'AR Aging', array('target' => '_blank')); ?></li>
+                  <li class="list-group-item"><?php echo anchor('C_halaman/dashboard', 'Best Seller', array('target' => '_blank')); ?></li>                        
                 </ul>
               </div>
             </div>
@@ -157,7 +156,7 @@
       <nav class="navbar navbar-default navbar-fixed">
         <div class="container-fluid">
           <div class="navbar-header">                    
-            <a class="navbar-brand" href="#">Dashboard</a>
+            <a class="navbar-brand" href="#">Qisthi Press</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -166,14 +165,13 @@
                   <p>Hai, <?php echo $this->session->userdata("name"); ?><b class="caret"></b></p>
                 </a>
                 <ul class="dropdown-menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-power-off"  style="float: left; padding: 3px; margin-right: 10px;"></i><p><a href="<?php echo base_url('login/logout'); ?>">Logout</a></p>
-                    </a>
+                  <li>                    
+                      <i class="fa fa-power-off" style="padding: 10px;"></i>
+                      <p style="display: inline; margin-left: 15px;"><a href="<?php echo base_url('login/logout'); ?>">Logout</a></p>
                   </li>
                 </ul>
               </li>
-              <li class="separator hidden-lg"></li><
+              <li class="separator hidden-lg"></li>
             </ul>
           </div>
         </div>

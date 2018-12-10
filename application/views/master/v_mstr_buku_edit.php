@@ -7,8 +7,8 @@
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-6">
-                                <h3 class="title">Master Goods</h3>
-                                <p>Edit Data Goods</p> 
+                                <h3 class="title">Master Buku</h3>
+                                <p>Edit Data Buku</p> 
                             </div>
                             <div class="col-md-6">
                                <div class="btn btn-info pull-right btn-fill">
@@ -36,14 +36,14 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Penerbit</label>
+                                                <label>Pengarang</label>
                                                 <input type="text" class="form-control" placeholder="Penerbit" name="pengarang" required value="<?php echo $buku->pengarang ?>">
                                             </div>
                                         </div>
                                          <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Penerbit</label>
-                                                <input type="text" class="form-control" placeholder="Tahun Penerbit" name="tahun" required value="<?php echo $buku->tahun ?>">
+                                                <label>Tahun Terbit</label>
+                                                <input type="text" class="form-control" placeholder="Tahun Terbit" name="tahun" required value="<?php echo $buku->tahun ?>">
                                             </div>
                                         </div>                                        
                                     </div>
@@ -65,17 +65,6 @@
 <!-- =============================================================================================== -->
                                     <div class="row">
                                         <div class="col-md-6">
-                                            
-                                            <label>Costprice</label> 
-                                            <div class="input-group">
-                                              <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button">Rp</button>
-                                              </span>
-                                              <input type="text" class="form-control" placeholder="Costprice" name="costprice" required value="<?php echo $buku->costprice ?>">
-                                            </div>
-                                        
-                                        </div>
-                                        <div class="col-md-6">
                                             <label>Sell Price</label> 
                                             <div class="input-group">
                                               <span class="input-group-btn">
@@ -84,6 +73,15 @@
                                               <input type="text" class="form-control" placeholder="Sell Price" name="sellprice" required value="<?php echo $buku->sellprice ?>">
                                             </div>
                                         </div>
+                                        <div class="col-md-6">                                            
+                                            <label>Costprice</label> 
+                                            <div class="input-group">
+                                              <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">Rp</button>
+                                              </span>
+                                              <input type="text" class="form-control" placeholder="Costprice" name="costprice" required value="<?php echo $buku->costprice ?>">
+                                            </div>                                        
+                                        </div>                                        
                                     </div>
                                         
                                         <button name="submit" type="submit" class="btn btn-info btn-fill pull-right" style="margin-top: 10px;" >Submit</button>
